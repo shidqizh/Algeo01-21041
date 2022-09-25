@@ -75,10 +75,6 @@ public class Matrix{
         this.matrix[i2][j] = temp;
       }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
 
     // Mencari angka 1 pertama pada suatu kolom jika ada mereturn nomor baris jika tidak ada mereturn -1. 
     public int findOneInCol(int j){
@@ -92,10 +88,7 @@ public class Matrix{
       }
       return tmp;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
     
     public void addRow(int iP, int i2, double k) {
       for (int j = 0; j<getCol();j++) {
@@ -113,9 +106,8 @@ public class Matrix{
       scan.close();
     }
 
-<<<<<<< HEAD
-    
-=======
+
+  
     public double cofac(Matrix m, int r, int c){
         int i;
         int j;
@@ -184,7 +176,7 @@ public class Matrix{
         }
       }
     }
->>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
+
 
 
     public Matrix gauss(Matrix m){

@@ -66,6 +66,18 @@ public class Matrix{
       }
     }
 
+    // Mencari angka 1 pertama pada suatu kolom jika ada mereturn nomor baris jika tidak ada mereturn -1. 
+    public int findOneInCol(int j){
+      int tmp = -1;
+      for (int i = j; i<getRow(); i++){
+        if (this.matrix[i][j] == 1) {
+          tmp = i;
+          break;
+        }
+      }
+      return tmp;
+    }
+
     
 }
 

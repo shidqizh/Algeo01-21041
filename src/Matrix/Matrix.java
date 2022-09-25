@@ -51,14 +51,14 @@ public class Matrix{
       int i;
       int j;
       Matrix nm;
-      nm = new Matrix(getRow()-1,getCol()-1);
+      nm = new Matrix(this.getRow()-1,this.getCol()-1);
       for(i=0;i<getRow();i++){
           for(j=0;j<getCol();j++){
               nm.setElmt(getElmt(i, j), i, j);
           }
       }
       return nm;
-    }
+  }
 
   public Matrix transpose(){
       int i;
@@ -119,9 +119,10 @@ public class Matrix{
           tmp = i;
           break;
         }
+        }
+        return tmp;
       }
-      return tmp;
-    }
+      
     
 
     public void addRow(int iP, int i2, double k) {
@@ -140,7 +141,7 @@ public class Matrix{
       scan.close();
     }
 
-    public double cofac(Matrix m, int r, int c){
+    public double cofac(int r, int c){
         int i;
         int j;
         int ni;
@@ -149,10 +150,10 @@ public class Matrix{
         Matrix nm;
         ni = 0;
         cof = 0;
-        nm = new Matrix(m.getRow()-1,m.getCol()-1);
-        for (i=0;i<=m.getRow()-1;i++){
+        nm = new Matrix(this.getRow()-1,this.getCol()-1);
+        for (i=0;i<=this.getRow()-1;i++){
             nj = 0;
-            for (j=0;j<=m.getCol()-1;j++){
+            for (j=0;j<=this.getCol()-1;j++){
                 if (i == r){
                     ni = i - 1;
                 } 
@@ -160,7 +161,7 @@ public class Matrix{
                     nj = j - 1;
                 } 
                 else{
-                    nm.setElmt(m.getElmt(i, j),ni,nj);
+                    nm.setElmt(this.getElmt(i, j),ni,nj);
                 }
                 nj++;
             }
@@ -168,26 +169,26 @@ public class Matrix{
         }
     
         if ((r + c) % 2 == 0){
-            cof = determinant(nm);
+            cof = nm.determinant();
         } 
         else{
-            cof = -1*determinant(nm);
+            cof = -1*nm.determinant();
         }
     
         return cof;
     }
 
-    public double determinant(Matrix m){
+    public double determinant(){
         int i;
         int j;
         double det = 0;
-        if(m.countElmt() == 1){
-            return m.getElmt(0, 0);
+        if(this.countElmt() == 1){
+            return getElmt(0, 0);
         }
         else{
             i = 0;
-            for (j=0;j<=m.getCol()-1;j++){
-                det += m.getElmt(i, j) * cofac(m,i,j);
+            for (j=0;j<=getCol()-1;j++){
+                det += getElmt(i, j) * cofac(i,j);
             }
         }
         return det;
@@ -267,6 +268,7 @@ public class Matrix{
       return tmpM;
     }
 
+
     public Matrix gaussJordan() {
       Matrix mg = this.gauss();
       for (int i = getRow(); i>0; i--) {
@@ -276,4 +278,57 @@ public class Matrix{
       }
       return mg;
     }
+
+public Matrix multiplyByConst(double x){
+  int i;
+  int j;
+  for(i=0;i<this.getRow();i++){
+      for(j=0;j<this.getCol();j++){
+          this.setElmt(x*this.getElmt(i, j), i, j);
+      }
+  }  
+  return this;
+}
+
+public Matrix createIdentity(int x){
+  Matrix nm = new Matrix(x,x);
+  int i,j;
+  for(i=0;i<x;i++){
+    for(j=0;j<x;j++){
+      if(i == j){
+        setElmt(1, i, j);
+      }
+      else{
+        setElmt(0, i, j);
+      }
+    }
+  }
+  return nm;
+}
+
+public Matrix inverseGJ(){
+  Matrix id = createIdentity(this.getRow());
+  // buat gauss
+  Matrix mg = this.gauss();
+  for (int i = getRow(); i>0; i--) {
+    for (int j=i-1; j>=0;j--) {
+      mg.addRow(j, i, -1*mg.getElmt(j, getFirstIdx(i)));
+      id.addRow(j, i, -1*id.getElmt(j, getFirstIdx(i)));
+    }
+  }
+  return id;
+}
+
+public Matrix inverseDet(){
+  Matrix kofak = new Matrix(getRow(), getCol());
+  int i;
+  int j;
+  for(i=0;i<getRow();i++){
+    for(j=0;j<getCol();j++){
+      kofak.setElmt(cofac(i, j), i, j);
+    }
+  }
+  double det = this.determinant();
+  return kofak.multiplyByConst(1/det);
+}
 }

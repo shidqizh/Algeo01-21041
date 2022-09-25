@@ -302,6 +302,12 @@ public Matrix createIdentity(int x){
   return nm;
 }
 
+public Matrix multiplyByRow(int row,double x) {
+  for (int i=0; i<getCol(); i++) {
+    setElmt(getElmt(row, i)*x, row , i);
+  }
+  return this;
+}
 public Matrix inverseGJ(){
   Matrix id = createIdentity(getRow());
   Matrix tmpM = new Matrix(getRow(), getCol());
@@ -314,7 +320,7 @@ public Matrix inverseGJ(){
       id.swap(j, tmpM.findOneInCol(j));
       for (i=j+1; i<tmpM.getRow(); i++){
         tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
-        id.addRow(i, j, id.getElmt(i,j)*(-1));
+        id.addRow(i, j, tmpM.getElmt(i,j)*(-1));
         }
     } else {
       tmpix = tmpM.getFirstIdxRow(j);
@@ -322,10 +328,10 @@ public Matrix inverseGJ(){
         tmpM.swap(j, tmpix);
         id.swap(j, tmpix);
         tmpM.simplifyRow(j);
-        id.simplifyRow(j);
+        id = id.multiplyByRow(j, getElmt(j, getFirstIdx(j)));
         for (i=j+1; i<tmpM.getRow(); i++){
           tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
-          id.addRow(i, j, id.getElmt(i,j)*(-1));
+          id.addRow(i, j, tmpM.getElmt(i,j)*(-1));
           }
       }
     }
@@ -334,7 +340,7 @@ public Matrix inverseGJ(){
   for (int k = mg.getRow()-1; k>0; k--) {
     for (int l=0; l<k;l++) {
       mg.addRow(l, k, -1*mg.getElmt(l,mg.getFirstIdx(k)));
-      id.addRow(l, k, -1*id.getElmt(l,mg.getFirstIdx(k)));
+      id.addRow(l, k, -1*mg.getElmt(l,mg.getFirstIdx(k)));
     }
   }
   return id;

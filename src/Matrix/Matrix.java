@@ -286,6 +286,57 @@ public class Matrix{
       return this;
     }
 
+public Matrix createIdentity(int x){
+  Matrix nm = new Matrix(x,x);
+  int i,j;
+  for(i=0;i<x;i++){
+    for(j=0;j<x;j++){
+      if(i == j){
+        setElmt(1, i, j);
+      }
+      else{
+        setElmt(0, i, j);
+      }
+    }
+  }
+  return nm;
+}
+
+public Matrix multiplyByRow(int row,double x) {
+  for (int i=0; i<getCol(); i++) {
+    setElmt(getElmt(row, i)*x, row , i);
+  }
+  return this;
+}
+public Matrix inverseGJ(){
+  Matrix id = createIdentity(getRow());
+  Matrix tmpM = new Matrix(getRow(), getCol());
+  int i, j, tmpix;
+
+  tmpM = copyMatrix();
+  for (j=0; j<tmpM.getCol()-1; j++){
+    if (tmpM.findOneInCol(j) != -1){
+      tmpM.swap(j, tmpM.findOneInCol(j));
+      id.swap(j, tmpM.findOneInCol(j));
+      for (i=j+1; i<tmpM.getRow(); i++){
+        tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+        id.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+        }
+    } else {
+      tmpix = tmpM.getFirstIdxRow(j);
+      if (tmpix != -1) {
+        tmpM.swap(j, tmpix);
+        id.swap(j, tmpix);
+        tmpM.simplifyRow(j);
+        id = id.multiplyByRow(j, getElmt(j, getFirstIdx(j)));
+        for (i=j+1; i<tmpM.getRow(); i++){
+          tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+          id.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+          }
+      }  
+      return this;
+    }
+
     public Matrix createIdentity(int x){
       Matrix nm = new Matrix(x,x);
       int i,j;
@@ -301,43 +352,6 @@ public class Matrix{
       }
       return nm;
     }
-
-    public Matrix inverseGJ(){
-      Matrix id = createIdentity(getRow());
-      Matrix tmpM = new Matrix(getRow(), getCol());
-      int i, j, tmpix;
-
-      tmpM = copyMatrix();
-      for (j=0; j<tmpM.getCol()-1; j++){
-        if (tmpM.findOneInCol(j) != -1){
-          tmpM.swap(j, tmpM.findOneInCol(j));
-          id.swap(j, tmpM.findOneInCol(j));
-          for (i=j+1; i<tmpM.getRow(); i++){
-            tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
-            id.addRow(i, j, id.getElmt(i,j)*(-1));
-            }
-        } else {
-          tmpix = tmpM.getFirstIdxRow(j);
-          if (tmpix != -1) {
-            tmpM.swap(j, tmpix);
-            id.swap(j, tmpix);
-            tmpM.simplifyRow(j);
-            id.simplifyRow(j);
-            for (i=j+1; i<tmpM.getRow(); i++){
-              tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
-              id.addRow(i, j, id.getElmt(i,j)*(-1));
-              }
-          }
-        }
-      }
-      Matrix mg = this.gauss();
-      for (int k = mg.getRow()-1; k>0; k--) {
-        for (int l=0; l<k;l++) {
-          mg.addRow(l, k, -1*mg.getElmt(l,mg.getFirstIdx(k)));
-          id.addRow(l, k, -1*id.getElmt(l,mg.getFirstIdx(k)));
-        }
-      }
-      return id;
     }
 
     public Matrix inverseDet(){

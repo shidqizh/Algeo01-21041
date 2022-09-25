@@ -348,41 +348,4 @@ public Matrix inverseGJ(){
       double det = this.determinant();
       return adj.multiplyByConst(1/det);
     }
-
-    public Matrix swapColCre(int j){
-      Matrix tmpM = new Matrix(getRow(),getRow());
-      int i, k;
-
-      for (i=0; i<tmpM.getRow(); i++){
-        for (k=0; k<tmpM.getCol(); k++){
-          if (k==j) {
-            tmpM.setElmt(getElmt(i,getCol()-1),i,k);
-          } else {
-            tmpM.setElmt(getElmt(i,k),i,k);
-          }
-        }
-      }
-      return tmpM;
-    }
-
-    public Matrix hascreamer(){
-      Matrix tmpM = new Matrix(getRow(), 1);
-      Matrix tmpDet1 = new Matrix(getRow(), getRow());
-      Matrix tmpDet2 = new Matrix(getRow(), getRow());
-      int i, j;
-      double det1, det2;
-
-      for (i=0; i<tmpDet1.getRow(); i++){
-        for (j=0; j<tmpDet1.getCol(); j++){
-          tmpDet1.setElmt(getElmt(i,j),i,j);
-        }
-      }
-      det1 = tmpDet1.determinant();
-      for (j=0; j<tmpDet2.getCol(); j++){
-        tmpDet2 = swapColCre(j);
-        det2 = tmpDet2.determinant();
-        tmpM.setElmt(det2/det1, j, 1);
-      }
-    return tmpM;
-    }
 }

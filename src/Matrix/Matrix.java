@@ -47,7 +47,32 @@ public class Matrix{
         return this.row * this.col;
     }
 
+    public Matrix copyMatrix(Matrix m){
+      int i;
+      int j;
+      Matrix nm;
+      nm = new Matrix(m.getRow()-1,m.getCol()-1);
+      for(i=0;i<m.getRow();i++){
+          for(j=0;j<m.getCol();j++){
+              nm.setElmt(m.getElmt(i, j), i, j);
+          }
+      }
+      return nm;
+  }
 
+  public Matrix transpose(){
+      int i;
+      int j;
+      int val;
+      Matrix nm = new Matrix(getRow()-1,getCol()-1);
+      for(i=0;i<=getRow()-1;i++){
+          for(j=i;j<=getCol()-1;j++){
+              nm.setElmt(getElmt(j, i), i, j);     
+          }
+      } 
+      return nm;
+  }
+  
     public int getFirstIdx(int i){
       int idx=0;
       for (int j=0; j<getCol();j++) {

@@ -185,6 +185,11 @@ public class Matrix{
     }
 >>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
 
-}
+
+    public Matrix gauss(Matrix m){
+      
+      
+      tmpM = copymatrix(m);
 
 
+    }

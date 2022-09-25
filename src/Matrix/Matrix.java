@@ -1,5 +1,7 @@
 package Matrix;
 
+import java.io.ObjectInputStream.GetField;
+
 public class Matrix{
     private int row,col;
     private double[][] matrix;
@@ -24,6 +26,9 @@ public class Matrix{
         }
       }
     
+    public double getElmt(int i,int j) {
+        return this.matrix[i][j];
+    }
 
     public int getRow(){
         return this.row;
@@ -32,6 +37,35 @@ public class Matrix{
     public int getCol(){
         return this.col;
     }
+
+    public int getFirstIdx(int i){
+      int idx=0;
+      for (int j=0; j<getCol();j++) {
+        if (getElmt(i, j) != 0) {
+          idx = j;
+          break;
+        }
+      }
+      return idx;
+    }
+
+    public void simplifyRow(int i){
+      int idx = getFirstIdx(i);
+      double firstElmt = getElmt(i, idx);
+      for (int j = idx; j<getCol();j++) {
+        getElmt(i, j) = getElmt(i,j) / firstElmt;
+      }
+    }
+
+    public void swap(int i1, int i2) {
+      double temp;
+      for (int j = 0; j<getCol();j++) {
+        temp = getElmt(i1, j);
+        getElmt(i1, j) = getElmt(i2,j);
+        getElmt(i2, j) = temp;
+      }
+    }
+
 
 }
 

@@ -330,10 +330,11 @@ public Matrix inverseGJ(){
       }
     }
   }
-  for (int k = tmpM.getRow()-1; k>0; k--) {
+  Matrix mg = this.gauss();
+  for (int k = mg.getRow()-1; k>0; k--) {
     for (int l=0; l<k;l++) {
-      tmpM.addRow(l, k, -1*tmpM.getElmt(l,tmpM.getFirstIdx(k)));
-      id.addRow(l, k, -1*id.getElmt(l,tmpM.getFirstIdx(k)));
+      mg.addRow(l, k, -1*mg.getElmt(l,mg.getFirstIdx(k)));
+      id.addRow(l, k, -1*id.getElmt(l,mg.getFirstIdx(k)));
     }
   }
   return id;

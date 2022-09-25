@@ -53,7 +53,7 @@ public class Matrix{
       int idx = getFirstIdx(i);
       double firstElmt = getElmt(i, idx);
       for (int j = idx; j<getCol();j++) {
-        getElmt(i, j) = getElmt(i,j) / firstElmt;
+        this.matrix[i][j] = getElmt(i,j) / firstElmt;
       }
     }
 
@@ -61,12 +61,12 @@ public class Matrix{
       double temp;
       for (int j = 0; j<getCol();j++) {
         temp = getElmt(i1, j);
-        getElmt(i1, j) = getElmt(i2,j);
-        getElmt(i2, j) = temp;
+        this.matrix[i1][j] = getElmt(i2,j);
+        this.matrix[i2][j] = temp;
       }
     }
 
-
+    
 }
 
 

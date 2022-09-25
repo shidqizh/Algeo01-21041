@@ -85,6 +85,7 @@ public class Matrix{
           tmp = i;
           break;
         
+        }
       }
       return tmp;
     }

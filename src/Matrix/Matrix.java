@@ -47,12 +47,22 @@ public class Matrix{
         return this.row * this.col;
     }
 
-
     public int getFirstIdx(int i){
-      int idx=0;
-      for (int j=0; j<getCol();j++) {
+      int idx = -1;
+      for (int j=0; j<getCol()-1;j++) {
         if (getElmt(i, j) != 0) {
           idx = j;
+          break;
+        }
+      }
+      return idx;
+    }
+
+    public int getFirstIdxRow(int j){
+      int idx = -1;
+      for (int i=0; i<getRow(); i++) {
+        if (getElmt(i, j) != 0) {
+          idx = i;
           break;
         }
       }
@@ -188,22 +198,30 @@ public class Matrix{
 
     public Matrix gauss(Matrix m){
       Matrix tmpM;
-      int i, j;
+      int i, j, tmpix;
       double ter;
 
       tmpM = copyMatrix(m);
       for (j=0; j<tmpM.getCol()-1; j++){
-        if (findOneInCol(j) != -1){
-          swap(j, findOneInCol(j));
+        if (tmpM.findOneInCol(j) != -1){
+          tmpM.swap(j, tmpM.findOneInCol(j));
           for (i=j+1; i<tmpM.getRow(); i++){
             ter = tmpM.getElmt(i,j);
-            addRow(i, j, ter*(-1));
+            tmpM.addRow(i, j, ter*(-1));
             }
-          }
         } else {
-          
+          tmpix = tmpM.getFirstIdxRow(j);
+          if (tmpix != -1) {
+            tmpM.swap(j, tmpix);
+            tmpM.simplifyRow(j);
+            for (i=j+1; i<tmpM.getRow(); i++){
+              ter = tmpM.getElmt(i,j);
+              tmpM.addRow(i, j, ter*(-1));
+              }
+          }
         }
       }
-
-
+      return tmpM;
     }
+  
+  }

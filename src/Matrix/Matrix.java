@@ -75,10 +75,6 @@ public class Matrix{
         this.matrix[i2][j] = temp;
       }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
 
     // Mencari angka 1 pertama pada suatu kolom jika ada mereturn nomor baris jika tidak ada mereturn -1. 
     public int findOneInCol(int j){
@@ -87,15 +83,11 @@ public class Matrix{
         if (this.matrix[i][j] == 1) {
           tmp = i;
           break;
-        
+        }
       }
       return tmp;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
-    
     public void addRow(int iP, int i2, double k) {
       for (int j = 0; j<getCol();j++) {
         this.matrix[iP][j] = getElmt(iP,j)+ getElmt(i2,j)*k;
@@ -112,9 +104,6 @@ public class Matrix{
       scan.close();
     }
 
-<<<<<<< HEAD
-    
-=======
     public double cofac(Matrix m, int r, int c){
         int i;
         int j;
@@ -183,13 +172,38 @@ public class Matrix{
         }
       }
     }
->>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
 
+    public Matrix copyMatrix(Matrix m){
+      int i;
+      int j;
+      Matrix nm;
+      nm = new Matrix(m.getRow()-1,m.getCol()-1);
+      for(i=0;i<m.getRow();i++){
+          for(j=0;j<m.getCol();j++){
+              nm.setElmt(m.getElmt(i, j), i, j);
+          }
+      }
+      return nm;
+    }
 
     public Matrix gauss(Matrix m){
-      
-      
-      tmpM = copymatrix(m);
+      Matrix tmpM;
+      int i, j;
+      double ter;
+
+      tmpM = copyMatrix(m);
+      for (j=0; j<tmpM.getCol()-1; j++){
+        if (findOneInCol(j) != -1){
+          swap(j, findOneInCol(j));
+          for (i=j+1; i<tmpM.getRow(); i++){
+            ter = tmpM.getElmt(i,j);
+            addRow(i, j, ter*(-1));
+            }
+          }
+        } else {
+          
+        }
+      }
 
 
     }

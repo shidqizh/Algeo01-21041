@@ -66,7 +66,6 @@ public class Matrix{
         this.matrix[i2][j] = temp;
       }
     }
-<<<<<<< HEAD
 
     // Mencari angka 1 pertama pada suatu kolom jika ada mereturn nomor baris jika tidak ada mereturn -1. 
     public int findOneInCol(int j){
@@ -79,9 +78,6 @@ public class Matrix{
       }
       return tmp;
     }
-
-=======
->>>>>>> 8043a4343dd617a2edf205e6fc7f0dc8547c8154
     
     public void addRow(int iP, int i2, double k) {
       for (int j = 0; j<getCol();j++) {
@@ -98,6 +94,7 @@ public class Matrix{
       }
     }
 
+    
 
 }
 

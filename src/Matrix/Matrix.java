@@ -332,3 +332,4 @@ public Matrix inverseDet(){
   return kofak.multiplyByConst(1/det);
 }
 }
+

@@ -202,12 +202,40 @@ public class Matrix{
       }
     }
 
+    public boolean isSquare(){
+      return (this.getCol() == this.getRow());
+    }
 
+    public boolean isIdentity(){
+      int i;
+      int j;
+      boolean cek = true;
+      if(this.isSquare() != true){
+           cek = false;
+      }
+      else{
+           for(i=0;i<this.getRow()-1;i++){
+               for(j=0;j<this.getCol()-1;j++){
+                   if (i == j) {
+                       if (this.getElmt(i, j) != 1) {
+                           cek = false;
+                       }
+                   }
+                   else {
+                       if (this.getElmt(i, j) != 0) {
+                           cek = false;
+                       }
+                   }
+               }
+           }
+      }
+      return cek; 
+    }
 
     public Matrix gauss(Matrix m){
       
       
-      tmpM = copymatrix(m);
+      tmpM = copyMatrix(m);
 
 
     }

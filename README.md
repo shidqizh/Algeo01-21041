@@ -1,18 +1,15 @@
-## Getting Started
+# **Tugas Besar 1 Aljabar Linier dan Geometri**
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Brief Description
+Tugas ini berisi tentang library aljabar linier dalam Bahasa Java yang
+terdiri dari fungsi-fungsi seperti eliminasi Gauss, eliminasi Gauss-Jordan, 
+menentukan balikan matriks, menghitung determinan, kaidah Cramer 
+(kaidah Cramer khusus untuk SPL dengan n peubah dan n
+persamaan). Library ini akan diimplementasikan sebagai calculator matrix
+yang dapat digunakan untuk menyelesaikan berbagai persoalan yang dimodelkan dalam bentuk SPL,
+menyelesaikan persoalan interpolasi, dan persoalan regresi.
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Anggota Kelompok
+1. Muhammad Hanan (13521041)
+2. Alex Sander (13521061)
+3. Shidqi Indy Izhari (13521097)

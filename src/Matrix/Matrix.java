@@ -63,7 +63,6 @@ public class Matrix{
   public Matrix transpose(){
       int i;
       int j;
-      int val;
       Matrix nm = new Matrix(getRow()-1,getCol()-1);
       for(i=0;i<=getRow()-1;i++){
           for(j=i;j<=getCol()-1;j++){
@@ -72,7 +71,7 @@ public class Matrix{
       } 
       return nm;
   }
-  
+
     public int getFirstIdx(int i){
       int idx=0;
       for (int j=0; j<getCol();j++) {
@@ -117,7 +116,7 @@ public class Matrix{
     
     public void addRow(int iP, int i2, double k) {
       for (int j = 0; j<getCol();j++) {
-        this.matrix[iP][j] = getElmt(iP,j)+ getElmt(i2,j)*k;
+        this.matrix[iP][j] = getElmt(iP,j) + getElmt(i2,j)*k;
       }
     }
 
@@ -211,3 +210,15 @@ public class Matrix{
 
 
     }
+
+
+    public Matrix gaussJordan() {
+      Matrix mg = this.gauss();
+      for (int i = getRow(); i>0; i--) {
+        for (int j=i-1; j>=0;j--) {
+          mg.addRow(j, i, -1*getElmt(j, getFirstIdx(i)));
+        }
+      }
+      return mg;
+    }
+}

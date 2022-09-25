@@ -23,7 +23,15 @@ public class Matrix{
           }
         }
       }
+    
 
+    public int getRow(){
+        return this.row;
+    }
+    
+    public int getCol(){
+        return this.col;
+    }
 
 }
 

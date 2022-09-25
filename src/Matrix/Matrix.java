@@ -2,7 +2,7 @@ package Matrix;
 
 public class Matrix{
     private int row,col;
-    private Double matrix[][];
+    private double[][] matrix;
 
     public Matrix(){
         this.col = 0;
@@ -12,7 +12,7 @@ public class Matrix{
     public Matrix(int row, int col){
         this.col = col;
         this.row = row;
-        this.matrix = new Double [row][col];
+        this.matrix = new double [row][col];
     }
     public Matrix(int row, int col, double c){
         this.row = row;
@@ -24,7 +24,7 @@ public class Matrix{
         }
       }
 
-      
+
 }
 
 

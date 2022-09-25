@@ -73,7 +73,7 @@ public class Matrix{
 
     public int getFirstIdx(int i){
       int idx = -1;
-      for (int j=0; j<getCol()-1;j++) {
+      for (int j=0; j<getCol();j++) {
         if (getElmt(i, j) != 0) {
           idx = j;
           break;
@@ -267,9 +267,9 @@ public class Matrix{
 
     public Matrix gaussJordan() {
       Matrix mg = this.gauss();
-      for (int i = getRow()-1; i>0; i--) {
-        for (int j=i-1; j>=0;j--) {
-          mg.addRow(j, i, -1*mg.getElmt(i,j));
+      for (int i = mg.getRow()-1; i>0; i--) {
+        for (int j=0; j<i;j++) {
+          mg.addRow(j, i, -1*mg.getElmt(j,mg.getFirstIdx(i)));
         }
       }
       return mg;
@@ -304,9 +304,8 @@ public Matrix createIdentity(int x){
 
 public Matrix inverseGJ(){
   Matrix id = createIdentity(this.getRow());
-  Matrix tmpM;
+  Matrix tmpM = new Matrix(getRow(), getCol());
   int i, j, tmpix;
-  double ter;
 
   tmpM = copyMatrix();
   for (j=0; j<tmpM.getCol()-1; j++){
@@ -314,9 +313,8 @@ public Matrix inverseGJ(){
       tmpM.swap(j, tmpM.findOneInCol(j));
       id.swap(j, tmpM.findOneInCol(j));
       for (i=j+1; i<tmpM.getRow(); i++){
-        ter = tmpM.getElmt(i,j);
-        tmpM.addRow(i, j, ter*(-1));
-        id.addRow(i, j, ter*(-1));
+        tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+        id.addRow(i, j, id.getElmt(i,j)*(-1));
         }
     } else {
       tmpix = tmpM.getFirstIdxRow(j);
@@ -326,18 +324,17 @@ public Matrix inverseGJ(){
         tmpM.simplifyRow(j);
         id.simplifyRow(j);
         for (i=j+1; i<tmpM.getRow(); i++){
-          ter = tmpM.getElmt(i,j);
-          tmpM.addRow(i, j, ter*(-1));
-          id.addRow(i, j, ter*(-1));
+          tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+          id.addRow(i, j, id.getElmt(i,j)*(-1));
           }
       }
     }
   }
-  Matrix mg = this.gauss();
-  for (int k = getRow(); k>0; k--) {
-    for (int l=k-1; l>=0;l--) {
-      mg.addRow(l, k, -1*mg.getElmt(l, getFirstIdx(k)));
-      id.addRow(l, k, -1*id.getElmt(l, getFirstIdx(k)));
+
+  for (int k = tmpM.getRow()-1; k>0; k--) {
+    for (int l=0; l<k;l++) {
+      tmpM.addRow(l, k, -1*tmpM.getElmt(l,tmpM.getFirstIdx(k)));
+      id.addRow(l, k, -1*id.getElmt(l,tmpM.getFirstIdx(k)));
     }
   }
   return id;

@@ -47,18 +47,18 @@ public class Matrix{
         return this.row * this.col;
     }
 
-    public Matrix copyMatrix(Matrix m){
+    public Matrix copyMatrix(){
       int i;
       int j;
       Matrix nm;
-      nm = new Matrix(m.getRow()-1,m.getCol()-1);
-      for(i=0;i<m.getRow();i++){
-          for(j=0;j<m.getCol();j++){
-              nm.setElmt(m.getElmt(i, j), i, j);
+      nm = new Matrix(getRow()-1,getCol()-1);
+      for(i=0;i<getRow();i++){
+          for(j=0;j<getCol();j++){
+              nm.setElmt(getElmt(i, j), i, j);
           }
       }
       return nm;
-  }
+    }
 
   public Matrix transpose(){
       int i;
@@ -119,10 +119,9 @@ public class Matrix{
           tmp = i;
           break;
         }
-        }
-        return tmp;
       }
-      
+      return tmp;
+    }
     
 
     public void addRow(int iP, int i2, double k) {
@@ -239,18 +238,6 @@ public class Matrix{
       }
       return cek; 
     }
-    public Matrix copyMatrix(){
-      int i;
-      int j;
-      Matrix nm;
-      nm = new Matrix(this.getRow()-1,this.getCol()-1);
-      for(i=0;i<this.getRow();i++){
-          for(j=0;j<this.getCol();j++){
-              nm.setElmt(this.getElmt(i, j), i, j);
-          }
-      }
-      return nm;
-    }
 
     public Matrix gauss(){
       Matrix tmpM;
@@ -279,7 +266,6 @@ public class Matrix{
       }
       return tmpM;
     }
-
 
     public Matrix gaussJordan() {
       Matrix mg = this.gauss();

@@ -196,18 +196,20 @@ public class Matrix{
     public void displayMatrix() {
       for (int i=0; i< getRow();i++){
         for (int j=0; j< getCol();j++) {
-          if (j == 0) {
-            System.out.print(getElmt(i, j));
-          }
-          else if (j == getCol()-1) {
-            System.out.print(" "+getElmt(i,j)+"\n");
+          if (j<getCol()-1) {
+            System.out.print(getElmt(i, j) + " ");
           }
           else {
-            System.out.print(" "+getElmt(i,j));
+            System.out.print(getElmt(i,j));
           }
         }
+        if(i<getRow()-1){
+          System.out.print("\n");
+        }
       }
+      System.out.print("\n");
     }
+
 
     public boolean isSquare(){
       return (this.getCol() == this.getRow());
@@ -380,7 +382,7 @@ public Matrix inverseGJ(){
       for (j=0; j<tmpDet2.getCol(); j++){
         tmpDet2 = swapColCre(j);
         det2 = tmpDet2.determinant();
-        tmpM.setElmt(det2/det1, j, 1);
+        tmpM.setElmt(det2/det1, j, 0);
       }
     return tmpM;
     }

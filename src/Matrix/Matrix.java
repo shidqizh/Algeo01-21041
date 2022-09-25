@@ -275,16 +275,16 @@ public class Matrix{
       return mg;
     }
 
-public Matrix multiplyByConst(double x){
-  int i;
-  int j;
-  for(i=0;i<this.getRow();i++){
-      for(j=0;j<this.getCol();j++){
-          this.setElmt(x*this.getElmt(i, j), i, j);
-      }
-  }  
-  return this;
-}
+    public Matrix multiplyByConst(double x){
+      int i;
+      int j;
+      for(i=0;i<this.getRow();i++){
+          for(j=0;j<this.getCol();j++){
+              this.setElmt(x*this.getElmt(i, j), i, j);
+          }
+      }  
+      return this;
+    }
 
 public Matrix createIdentity(int x){
   Matrix nm = new Matrix(x,x);
@@ -330,23 +330,59 @@ public Matrix inverseGJ(){
     }
   }
   return hasil;
-
 }
 
-public Matrix inverseDet(){
-  Matrix kofak = new Matrix(getRow(), getCol());
-  Matrix adj = new Matrix(getCol(),getRow());
-  int i;
-  int j;
-  for(i=0;i<getRow();i++){
-    for(j=0;j<getCol();j++){
-      kofak.setElmt(cofac(i, j), i, j);
+
+    public Matrix inverseDet(){
+      Matrix kofak = new Matrix(getRow(), getCol());
+      Matrix adj = new Matrix(getCol(),getRow());
+      int i;
+      int j;
+      for(i=0;i<getRow();i++){
+        for(j=0;j<getCol();j++){
+          kofak.setElmt(cofac(i, j), i, j);
+        }
+      }
+
+      adj = kofak.transpose();
+      double det = this.determinant();
+      return adj.multiplyByConst(1/det);
     }
-  }
 
-  adj = kofak.transpose();
-  double det = this.determinant();
-  return adj.multiplyByConst(1/det);
-}
-}
+    public Matrix swapColCre(int j){
+      Matrix tmpM = new Matrix(getRow(),getRow());
+      int i, k;
 
+      for (i=0; i<tmpM.getRow(); i++){
+        for (k=0; k<tmpM.getCol(); k++){
+          if (k==j) {
+            tmpM.setElmt(getElmt(i,getCol()-1),i,k);
+          } else {
+            tmpM.setElmt(getElmt(i,k),i,k);
+          }
+        }
+      }
+      return tmpM;
+    }
+
+    public Matrix hascreamer(){
+      Matrix tmpM = new Matrix(getRow(), 1);
+      Matrix tmpDet1 = new Matrix(getRow(), getRow());
+      Matrix tmpDet2 = new Matrix(getRow(), getRow());
+      int i, j;
+      double det1, det2;
+
+      for (i=0; i<tmpDet1.getRow(); i++){
+        for (j=0; j<tmpDet1.getCol(); j++){
+          tmpDet1.setElmt(getElmt(i,j),i,j);
+        }
+      }
+      det1 = tmpDet1.determinant();
+      for (j=0; j<tmpDet2.getCol(); j++){
+        tmpDet2 = swapColCre(j);
+        det2 = tmpDet2.determinant();
+        tmpM.setElmt(det2/det1, j, 1);
+      }
+    return tmpM;
+    }
+}

@@ -80,8 +80,25 @@ public class Matrix{
           this.matrix[i][j] = scan.nextDouble();
         }
       }
+      scan.close();
     }
 
+
+    public void displayMatrix() {
+      for (int i=0; i< getRow();i++){
+        for (int j=0; j< getCol();j++) {
+          if (j == 0) {
+            System.out.print(getElmt(i, j));
+          }
+          else if (j == getCol()) {
+            System.out.println(getElmt(i,j));
+          }
+          else {
+            System.out.print(getElmt(i,j)+" ");
+          }
+        }
+      }
+    }
 
 }
 

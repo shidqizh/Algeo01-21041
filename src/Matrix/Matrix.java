@@ -39,6 +39,15 @@ public class Matrix{
         return this.col;
     }
 
+    public void setElmt(double x, int i, int j){
+        this.matrix[i][j] = x;
+    }
+
+    public int countElmt(){
+        return this.row * this.col;
+    }
+
+
     public int getFirstIdx(int i){
       int idx=0;
       for (int j=0; j<getCol();j++) {
@@ -66,6 +75,10 @@ public class Matrix{
         this.matrix[i2][j] = temp;
       }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
 
     // Mencari angka 1 pertama pada suatu kolom jika ada mereturn nomor baris jika tidak ada mereturn -1. 
     public int findOneInCol(int j){
@@ -74,10 +87,14 @@ public class Matrix{
         if (this.matrix[i][j] == 1) {
           tmp = i;
           break;
-        }
+        
       }
       return tmp;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
     
     public void addRow(int iP, int i2, double k) {
       for (int j = 0; j<getCol();j++) {
@@ -92,9 +109,81 @@ public class Matrix{
           this.matrix[i][j] = scan.nextDouble();
         }
       }
+      scan.close();
     }
 
+<<<<<<< HEAD
     
+=======
+    public double cofac(Matrix m, int r, int c){
+        int i;
+        int j;
+        int ni;
+        int nj;
+        double cof;
+        Matrix nm;
+        ni = 0;
+        cof = 0;
+        nm = new Matrix(m.getRow()-1,m.getCol()-1);
+        for (i=0;i<=m.getRow()-1;i++){
+            nj = 0;
+            for (j=0;j<=m.getCol()-1;j++){
+                if (i == r){
+                    ni = i - 1;
+                } 
+                else if (j == c){
+                    nj = j - 1;
+                } 
+                else{
+                    nm.setElmt(m.getElmt(i, j),ni,nj);
+                }
+                nj++;
+            }
+            ni++;
+        }
+    
+        if ((r + c) % 2 == 0){
+            cof = determinant(nm);
+        } 
+        else{
+            cof = -1*determinant(nm);
+        }
+    
+        return cof;
+    }
+
+    public double determinant(Matrix m){
+        int i;
+        int j;
+        double det = 0;
+        if(m.countElmt() == 1){
+            return m.getElmt(0, 0);
+        }
+        else{
+            i = 0;
+            for (j=0;j<=m.getCol()-1;j++){
+                det += m.getElmt(i, j) * cofac(m,i,j);
+            }
+        }
+        return det;
+    }
+
+    public void displayMatrix() {
+      for (int i=0; i< getRow();i++){
+        for (int j=0; j< getCol();j++) {
+          if (j == 0) {
+            System.out.print(getElmt(i, j));
+          }
+          else if (j == getCol()) {
+            System.out.println(getElmt(i,j));
+          }
+          else {
+            System.out.print(getElmt(i,j)+" ");
+          }
+        }
+      }
+    }
+>>>>>>> 0802e1d9d56852dd58716dddf275bbacb3f5fe4d
 
 }
 

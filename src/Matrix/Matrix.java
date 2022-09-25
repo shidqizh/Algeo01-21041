@@ -1,6 +1,7 @@
 package Matrix;
 
 import java.io.ObjectInputStream.GetField;
+import java.util.Scanner;
 
 public class Matrix{
     private int row,col;
@@ -72,6 +73,35 @@ public class Matrix{
         temp = getElmt(i1, j);
         this.matrix[i1][j] = getElmt(i2,j);
         this.matrix[i2][j] = temp;
+      }
+    }
+
+
+    // Mencari angka 1 pertama pada suatu kolom jika ada mereturn nomor baris jika tidak ada mereturn -1. 
+    public int findOneInCol(int j){
+      int tmp = -1;
+      for (int i = j; i<getRow(); i++){
+        if (this.matrix[i][j] == 1) {
+          tmp = i;
+          break;
+        }
+      }
+      return tmp;
+    }
+
+    
+    public void addRow(int iP, int i2, double k) {
+      for (int j = 0; j<getCol();j++) {
+        this.matrix[iP][j] = getElmt(iP,j)+ getElmt(i2,j)*k;
+      }
+    }
+
+    public void readMatrix() {
+      Scanner scan = new Scanner(System.in);
+      for (int i=0; i< getRow();i++){
+        for (int j=0; j< getCol();j++) {
+          this.matrix[i][j] = scan.nextDouble();
+        }
       }
     }
 

@@ -303,7 +303,7 @@ public Matrix createIdentity(int x){
 }
 
 public Matrix inverseGJ(){
-  Matrix id = createIdentity(this.getRow());
+  Matrix id = createIdentity(getRow());
   Matrix tmpM = new Matrix(getRow(), getCol());
   int i, j, tmpix;
 
@@ -330,7 +330,6 @@ public Matrix inverseGJ(){
       }
     }
   }
-
   for (int k = tmpM.getRow()-1; k>0; k--) {
     for (int l=0; l<k;l++) {
       tmpM.addRow(l, k, -1*tmpM.getElmt(l,tmpM.getFirstIdx(k)));

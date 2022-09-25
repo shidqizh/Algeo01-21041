@@ -308,12 +308,40 @@ public Matrix createIdentity(int x){
 
 public Matrix inverseGJ(){
   Matrix id = createIdentity(this.getRow());
-  // buat gauss
+  Matrix tmpM;
+  int i, j, tmpix;
+  double ter;
+
+  tmpM = copyMatrix();
+  for (j=0; j<tmpM.getCol()-1; j++){
+    if (tmpM.findOneInCol(j) != -1){
+      tmpM.swap(j, tmpM.findOneInCol(j));
+      id.swap(j, tmpM.findOneInCol(j));
+      for (i=j+1; i<tmpM.getRow(); i++){
+        ter = tmpM.getElmt(i,j);
+        tmpM.addRow(i, j, ter*(-1));
+        id.addRow(i, j, ter*(-1));
+        }
+    } else {
+      tmpix = tmpM.getFirstIdxRow(j);
+      if (tmpix != -1) {
+        tmpM.swap(j, tmpix);
+        id.swap(j, tmpix);
+        tmpM.simplifyRow(j);
+        id.simplifyRow(j);
+        for (i=j+1; i<tmpM.getRow(); i++){
+          ter = tmpM.getElmt(i,j);
+          tmpM.addRow(i, j, ter*(-1));
+          id.addRow(i, j, ter*(-1));
+          }
+      }
+    }
+  }
   Matrix mg = this.gauss();
-  for (int i = getRow(); i>0; i--) {
-    for (int j=i-1; j>=0;j--) {
-      mg.addRow(j, i, -1*mg.getElmt(j, getFirstIdx(i)));
-      id.addRow(j, i, -1*id.getElmt(j, getFirstIdx(i)));
+  for (int k = getRow(); k>0; k--) {
+    for (int l=k-1; l>=0;l--) {
+      mg.addRow(l, k, -1*mg.getElmt(l, getFirstIdx(k)));
+      id.addRow(l, k, -1*id.getElmt(l, getFirstIdx(k)));
     }
   }
   return id;

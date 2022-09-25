@@ -269,7 +269,7 @@ public class Matrix{
       Matrix mg = this.gauss();
       for (int i = getRow()-1; i>0; i--) {
         for (int j=i-1; j>=0;j--) {
-          mg.addRow(j, i, -1*getElmt(getFirstIdx(i),j));
+          mg.addRow(j, i, -1*mg.getElmt(i,j));
         }
       }
       return mg;

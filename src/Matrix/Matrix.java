@@ -1,6 +1,5 @@
 package Matrix;
 
-import java.io.ObjectInputStream.GetField;
 import java.util.Scanner;
 
 public class Matrix{
@@ -51,7 +50,7 @@ public class Matrix{
       int i;
       int j;
       Matrix nm;
-      nm = new Matrix(this.getRow()-1,this.getCol()-1);
+      nm = new Matrix(this.getRow(),this.getCol());
       for(i=0;i<getRow();i++){
           for(j=0;j<getCol();j++){
               nm.setElmt(getElmt(i, j), i, j);
@@ -63,9 +62,9 @@ public class Matrix{
   public Matrix transpose(){
       int i;
       int j;
-      Matrix nm = new Matrix(getRow()-1,getCol()-1);
-      for(i=0;i<=getRow()-1;i++){
-          for(j=i;j<=getCol()-1;j++){
+      Matrix nm = new Matrix(getCol(),getRow());
+      for(i=0;i<=nm.getRow()-1;i++){
+          for(j=0;j<=nm.getCol()-1;j++){
               nm.setElmt(getElmt(j, i), i, j);     
           }
       } 
@@ -85,7 +84,7 @@ public class Matrix{
 
     public int getFirstIdxRow(int j){
       int idx = -1;
-      for (int i=0; i<getRow(); i++) {
+      for (int i=j; i<getRow(); i++) {
         if (getElmt(i, j) != 0) {
           idx = i;
           break;
@@ -200,11 +199,11 @@ public class Matrix{
           if (j == 0) {
             System.out.print(getElmt(i, j));
           }
-          else if (j == getCol()) {
-            System.out.println(getElmt(i,j));
+          else if (j == getCol()-1) {
+            System.out.print(" "+getElmt(i,j)+"\n");
           }
           else {
-            System.out.print(getElmt(i,j)+" ");
+            System.out.print(" "+getElmt(i,j));
           }
         }
       }
@@ -241,17 +240,15 @@ public class Matrix{
     }
 
     public Matrix gauss(){
-      Matrix tmpM;
+      Matrix tmpM = new Matrix(getRow(), getCol());
       int i, j, tmpix;
-      double ter;
 
       tmpM = copyMatrix();
       for (j=0; j<tmpM.getCol()-1; j++){
         if (tmpM.findOneInCol(j) != -1){
           tmpM.swap(j, tmpM.findOneInCol(j));
           for (i=j+1; i<tmpM.getRow(); i++){
-            ter = tmpM.getElmt(i,j);
-            tmpM.addRow(i, j, ter*(-1));
+            tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
             }
         } else {
           tmpix = tmpM.getFirstIdxRow(j);
@@ -259,8 +256,7 @@ public class Matrix{
             tmpM.swap(j, tmpix);
             tmpM.simplifyRow(j);
             for (i=j+1; i<tmpM.getRow(); i++){
-              ter = tmpM.getElmt(i,j);
-              tmpM.addRow(i, j, ter*(-1));
+              tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
               }
           }
         }
@@ -271,9 +267,9 @@ public class Matrix{
 
     public Matrix gaussJordan() {
       Matrix mg = this.gauss();
-      for (int i = getRow(); i>0; i--) {
+      for (int i = getRow()-1; i>0; i--) {
         for (int j=i-1; j>=0;j--) {
-          mg.addRow(j, i, -1*getElmt(j, getFirstIdx(i)));
+          mg.addRow(j, i, -1*getElmt(getFirstIdx(i),j));
         }
       }
       return mg;
@@ -349,6 +345,7 @@ public Matrix inverseGJ(){
 
 public Matrix inverseDet(){
   Matrix kofak = new Matrix(getRow(), getCol());
+  Matrix adj = new Matrix(getCol(),getRow());
   int i;
   int j;
   for(i=0;i<getRow();i++){
@@ -356,8 +353,10 @@ public Matrix inverseDet(){
       kofak.setElmt(cofac(i, j), i, j);
     }
   }
+
+  adj = kofak.transpose();
   double det = this.determinant();
-  return kofak.multiplyByConst(1/det);
+  return adj.multiplyByConst(1/det);
 }
 }
 

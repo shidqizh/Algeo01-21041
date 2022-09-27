@@ -386,4 +386,38 @@ public Matrix inverseGJ(){
       }
     return tmpM;
     }
+
+    public double detGauss(){
+      Matrix tmpM = new Matrix(getRow(), getCol());
+      int i, j, tmpix;
+      double hasil;
+      hasil =1;
+
+      tmpM = copyMatrix();
+      for (j=0; j<tmpM.getCol(); j++){
+        if (tmpM.findOneInCol(j) != -1){
+          if (j!=tmpM.findOneInCol(j)){
+            hasil *= (-1);
+          }
+          tmpM.swap(j, tmpM.findOneInCol(j));
+          for (i=j+1; i<tmpM.getRow(); i++){
+            tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+            }
+        } else {
+          tmpix = tmpM.getFirstIdxRow(j);
+          if (tmpix != -1) {
+            if (j!=tmpix){
+              hasil *= (-1);
+            }
+            tmpM.swap(j, tmpix);
+            hasil *= tmpM.getElmt(j,j);
+            tmpM.simplifyRow(j);
+            for (i=j+1; i<tmpM.getRow(); i++){
+              tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+              }
+          }
+        }
+      }
+      return hasil;
+    }
 }

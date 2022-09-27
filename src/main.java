@@ -1,17 +1,9 @@
-import Matrix.*;
+import Aplikasi.SPL;
 
 public class main {
     public static void main(String[] agrs) {
-        Matrix m = new Matrix(4, 6);
-        m.readMatrix();
-        m.displayMatrix();
-
-        //double det = m.detGauss();
-        //System.out.println(det);
-
-        Matrix p = new Matrix(4,6);
-        p = m.gaussJordan();
-        p.displayMatrix();
+        SPL x = new SPL();
+        x.spl4();
         
     }
 }

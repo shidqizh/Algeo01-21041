@@ -129,15 +129,13 @@ public class Matrix{
         this.matrix[iP][j] = getElmt(iP,j) + getElmt(i2,j)*k;
       }
     }
-
+    Scanner scan = new Scanner(System.in);
     public void readMatrix() {
-      Scanner scan = new Scanner(System.in);
       for (int i=0; i< getRow();i++){
         for (int j=0; j< getCol();j++) {
           this.matrix[i][j] = scan.nextDouble();
         }
       }
-      scan.close();
     }
 
     public double cofac(int r, int c){
@@ -419,5 +417,28 @@ public Matrix inverseGJ(){
         }
       }
       return hasil;
+    }
+
+    public Matrix multiplyMat(Matrix M){
+      Matrix mtemp = new Matrix(getRow(),M.getCol());
+      double temp;
+      for (int i = 0; i<mtemp.getRow();i++) {
+          for (int j = 0; j<mtemp.getCol();j++) {
+              temp = 0;
+              for (int k=0; k<getCol();k++){
+                  temp = temp + getElmt(i, k)*M.getElmt(k, j);
+              }
+              mtemp.setElmt(temp, i, j);
+          }
+      }
+      return mtemp;
+    }
+
+    public void inversSPL(Matrix M){
+      Matrix inv = new Matrix(getRow(),getCol());
+      inv = inverseGJ();
+      Matrix hasil = new Matrix(getRow(),1);
+      hasil = inv.multiplyMat(M);
+      hasil.displayMatrix();
     }
 }

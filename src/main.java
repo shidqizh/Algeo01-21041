@@ -2,15 +2,16 @@ import Matrix.*;
 
 public class main {
     public static void main(String[] agrs) {
-        Matrix m = new Matrix(3, 3);
+        Matrix m = new Matrix(4, 6);
         m.readMatrix();
         m.displayMatrix();
-        //Matrix p = new Matrix(3,3);
-        double det;
-        det = m.detGauss();
-        System.out.println(det);
-        //p = m.inverseGJ();
-        //p.displayMatrix();
+
+        //double det = m.detGauss();
+        //System.out.println(det);
+
+        Matrix p = new Matrix(4,6);
+        p = m.gaussJordan();
+        p.displayMatrix();
         
     }
 }

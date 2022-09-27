@@ -3,6 +3,10 @@ import java.util.Scanner;
 import Matrix.*;
 public class Inverse {
     Scanner scan = new Scanner(System.in);
+    public Inverse(){
+        
+    }
+    
     public void invGJ(){
         int row,col;
         do{

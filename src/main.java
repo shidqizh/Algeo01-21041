@@ -1,6 +1,9 @@
 import Matrix.*;
+import Aplikasi.Determinan;
 import Aplikasi.InterpolasiPolinom;
+import Aplikasi.Inverse;
 import Aplikasi.InterpolasiPolinom.*;
+
 
 public class main {
     public static void main(String[] agrs) {
@@ -15,7 +18,14 @@ public class main {
         //p = m.gaussJordan();
         //p.displayMatrix();
         
-        InterpolasiPolinom tmp = new InterpolasiPolinom();
-        tmp.InpolPolinom();
+        //InterpolasiPolinom tmp = new InterpolasiPolinom();
+        //tmp.InpolPolinom();
+
+        //Determinan txp = new Determinan();
+        //txp.kofdet();
+        //txp.gaussdet();
+
+        Inverse txx = new Inverse();
+        txx.invKofDet();
     }
 }

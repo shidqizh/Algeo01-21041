@@ -4,6 +4,10 @@ import Matrix.*;
 
 public class Determinan{
     Scanner scan = new Scanner(System.in);
+    public Determinan(){
+        
+    }
+    
     public void kofdet(){
         int row,col;
         do{

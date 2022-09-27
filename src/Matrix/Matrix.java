@@ -271,7 +271,7 @@ public class Matrix{
       Matrix mg = this.gauss();
       for (int i = mg.getRow()-1; i>0; i--) {
         for (int j=0; j<i;j++) {
-          mg.addRow(j, i, -1*mg.getElmt(j,mg.getFirstIdx(i)));
+          mg.addRow(j, i, -1*mg.getElmt(j,i));
         }
       }
       return mg;

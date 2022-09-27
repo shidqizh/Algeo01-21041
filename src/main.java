@@ -5,9 +5,12 @@ public class main {
         Matrix m = new Matrix(3, 3);
         m.readMatrix();
         m.displayMatrix();
-        Matrix p = new Matrix(3,3);
-        p = m.inverseGJ();
-        p.displayMatrix();
+        //Matrix p = new Matrix(3,3);
+        double det;
+        det = m.detGauss();
+        System.out.println(det);
+        //p = m.inverseGJ();
+        //p.displayMatrix();
         
     }
 }

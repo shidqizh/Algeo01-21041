@@ -346,20 +346,53 @@ public Matrix inverseGJ(){
   return id;
 }
 
-public Matrix inverseDet(){
-  Matrix kofak = new Matrix(getRow(), getCol());
-  Matrix adj = new Matrix(getCol(),getRow());
-  int i;
-  int j;
-  for(i=0;i<getRow();i++){
-    for(j=0;j<getCol();j++){
-      kofak.setElmt(cofac(i, j), i, j);
+  public Matrix inverseDet(){
+    Matrix kofak = new Matrix(getRow(), getCol());
+    Matrix adj = new Matrix(getCol(),getRow());
+    int i;
+    int j;
+    for(i=0;i<getRow();i++){
+      for(j=0;j<getCol();j++){
+        kofak.setElmt(cofac(i, j), i, j);
+      }
     }
+
+    adj = kofak.transpose();
+    double det = this.determinant();
+    return adj.multiplyByConst(1/det);
   }
 
-  adj = kofak.transpose();
-  double det = this.determinant();
-  return adj.multiplyByConst(1/det);
-}
+  public double detGauss(){
+    Matrix tmpM = new Matrix(getRow(), getCol());
+    int i, j, tmpix;
+    double det=1;
+
+    tmpM = copyMatrix();
+    for (j=0; j<tmpM.getCol()-1; j++){
+      if (tmpM.findOneInCol(j) != -1){
+        tmpM.swap(j, tmpM.findOneInCol(j));
+        if (j!=tmpM.findOneInCol(j)){
+          det *= -1;
+        }
+        for (i=j+1; i<tmpM.getRow(); i++){
+          tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+          }
+      } else {
+        tmpix = tmpM.getFirstIdxRow(j);
+        if (tmpix != -1) {
+          tmpM.swap(j, tmpix);
+          if (j!=tmpix){
+            det *= -1;
+          }
+          det *= (getElmt(j, getFirstIdx(j)));
+          tmpM.simplifyRow(j);
+          for (i=j+1; i<tmpM.getRow(); i++){
+            tmpM.addRow(i, j, tmpM.getElmt(i,j)*(-1));
+          }
+        }
+      }
+    }
+    return det;
+  }
 }
 

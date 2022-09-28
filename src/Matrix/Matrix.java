@@ -441,4 +441,87 @@ public Matrix inverseGJ(){
       hasil = inv.multiplyMat(M);
       hasil.displayMatrix();
     }
+
+    public boolean isRowzero(int i){
+      boolean temp = true;
+      for (int j = 0; j<getCol(); j++){
+        if (getElmt(i, j) != 0){
+          temp = false;
+        }
+      }
+      return temp;
+    }
+
+    public void hasilPara() {
+      Matrix m = new Matrix(getRow(), getCol());
+      Matrix a = new Matrix(getRow(), getCol()-1);
+
+      m = gaussJordan();
+      int i,j,c;
+      boolean solv=true;
+
+      for (i=0;i<getRow();i++){
+        for (j=0; j<getCol()-1;j++){
+          a.setElmt(m.getElmt(i, j), i, j);
+        }
+      }
+
+      for (i=0;i<getRow();i++){
+        if (m.isRowzero(i)){
+          solv = false;
+        }
+      }
+
+      if (!solv){
+        for (i = 0; i<getRow();i++){
+          c=0;
+          for (j=0;j<getCol();j++){
+            if (m.getElmt(i, j)!=0) {
+              if (j!=getCol()-1) {
+                if (c==0){
+                  System.out.printf("%fx%d",m.getElmt(i, j),j);
+                  c++;
+                }
+                else{
+                  System.out.printf(" + %fx%d " + m.getElmt(i, j)+"x",j);
+                }
+              }
+              else{
+                System.out.printf(" = %f\n", m.getElmt(i, j));
+              }
+            } 
+          }
+        } 
+      }
+      else{
+        for (i=0;i<getRow();i++){
+          if (a.isRowzero(i)){
+            solv = false;
+          }
+        }
+        if (solv){
+          for (i = 0; i<getRow();i++){
+            c=0;
+            for (j=0;j<getCol();j++){
+              if (m.getElmt(i, j)!=0) {
+                if (c==0){
+                  System.out.printf("%fx%d",m.getElmt(i, j),j);
+                  c++;
+                }
+                else{
+                  System.out.printf(" + %fx%d " + m.getElmt(i, j)+"x",j);
+                }
+              }
+              else{
+                System.out.printf(" = %f\n", m.getElmt(i, j));
+              }
+            }
+          } 
+        }
+        else{
+          System.out.println("Tidak ada nilai x yang memenuhi");
+        }
+      }
+    }
+
 }

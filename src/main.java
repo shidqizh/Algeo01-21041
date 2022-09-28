@@ -2,13 +2,15 @@ import Matrix.*;
 
 import java.util.Scanner;
 
+import Aplikasi.InterpolasiBikubik;
+
 //import Aplikasi.Menu;
 
 import Aplikasi.InterpolasiPolinom;
 
 
 public class main {
-    public static void main(String[] agrs) {
+    public static void main(String[] args) {
         //Matrix m = new Matrix(4, 6);
         //m.readMatrix();
         //m.displayMatrix();
@@ -20,8 +22,11 @@ public class main {
         //p = m.gaussJordan();
         //p.displayMatrix();
         
-        InterpolasiPolinom tmp = new InterpolasiPolinom();
-        tmp.InpolPolinom();
+        //InterpolasiPolinom tmp = new InterpolasiPolinom();
+        //tmp.InpolPolinom();
+
+        InterpolasiBikubik tmp = new InterpolasiBikubik();
+        tmp.InpolBikubik();
 
         //Determinan txp = new Determinan();
         //txp.kofdet();

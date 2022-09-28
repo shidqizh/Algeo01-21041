@@ -18,14 +18,14 @@ public class main {
         //p = m.gaussJordan();
         //p.displayMatrix();
         
-        //InterpolasiPolinom tmp = new InterpolasiPolinom();
-        //tmp.InpolPolinom();
+        InterpolasiPolinom tmp = new InterpolasiPolinom();
+        tmp.InpolPolinom();
 
         //Determinan txp = new Determinan();
         //txp.kofdet();
         //txp.gaussdet();
 
-        Inverse txx = new Inverse();
-        txx.invKofDet();
+        //Inverse txx = new Inverse();
+        //txx.invKofDet();
     }
 }

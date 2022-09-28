@@ -2,7 +2,7 @@ import Matrix.*;
 
 import java.util.Scanner;
 
-import Aplikasi.Menu;
+//import Aplikasi.Menu;
 
 import Aplikasi.InterpolasiPolinom;
 

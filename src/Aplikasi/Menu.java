@@ -65,7 +65,11 @@ public class Menu {
             case 4:
                 InterpolasiPolinom inpol = new InterpolasiPolinom();
                 inpol.InpolPolinom();
-                
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
         }
     }
 }

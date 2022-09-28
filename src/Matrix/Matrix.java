@@ -476,8 +476,8 @@ public Matrix inverseGJ(){
         for (i = 0; i<getRow();i++){
           c=0;
           for (j=0;j<getCol();j++){
-            if (m.getElmt(i, j)!=0) {
-              if (j!=getCol()-1) {
+            if (j!=getCol()-1){
+              if (m.getElmt(i, j)!=0) {
                 if (c==0){
                   System.out.printf("%fx%d",m.getElmt(i, j),j);
                   c++;
@@ -486,10 +486,10 @@ public Matrix inverseGJ(){
                   System.out.printf(" + %fx%d " + m.getElmt(i, j)+"x",j);
                 }
               }
-              else{
-                System.out.printf(" = %f\n", m.getElmt(i, j));
-              }
-            } 
+            }
+            else{
+              System.out.printf(" = %f\n", m.getElmt(i, j));
+            }
           }
         } 
       }
@@ -503,13 +503,15 @@ public Matrix inverseGJ(){
           for (i = 0; i<getRow();i++){
             c=0;
             for (j=0;j<getCol();j++){
-              if (m.getElmt(i, j)!=0) {
-                if (c==0){
-                  System.out.printf("%fx%d",m.getElmt(i, j),j);
-                  c++;
-                }
-                else{
-                  System.out.printf(" + %fx%d " + m.getElmt(i, j)+"x",j);
+              if (j!=getCol()-1){
+                if (m.getElmt(i, j)!=0) {
+                  if (c==0){
+                    System.out.printf("%fx%d",m.getElmt(i, j),j);
+                    c++;
+                  }
+                  else{
+                    System.out.printf(" + %fx%d " + m.getElmt(i, j)+"x",j);
+                  }
                 }
               }
               else{

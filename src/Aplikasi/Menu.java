@@ -5,6 +5,12 @@ import java.util.Scanner;
 public class Menu {
     public Menu(){}
     Scanner scan = new Scanner(System.in);
+    
+    public void list() {
+        System.out.println("MENU");
+        System.out.println("1. Sistem Persamaan Linier\n2. Determinan\n3. Matriks balikan\n4. Interpolasi Polinom\n5. Interpolasi Bicubic\n6. Regresi linier berganda\n7. Keluar");
+    }
+    
     public void pilihan(int x){
         int y;
         switch(x) {

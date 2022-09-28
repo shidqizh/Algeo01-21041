@@ -1,8 +1,10 @@
 import Matrix.*;
-import Aplikasi.Determinan;
+
+import java.util.Scanner;
+
+import Aplikasi.Menu;
+
 import Aplikasi.InterpolasiPolinom;
-import Aplikasi.Inverse;
-import Aplikasi.InterpolasiPolinom.*;
 
 
 public class main {

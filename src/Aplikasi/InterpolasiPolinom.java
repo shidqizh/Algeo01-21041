@@ -2,8 +2,6 @@ package Aplikasi;
 
 import java.util.Scanner;
 
-import javax.swing.event.SwingPropertyChangeSupport;
-
 import Matrix.*;
 
 public class InterpolasiPolinom {

@@ -38,6 +38,8 @@ public class SPL {
         Hasil = Hasil.gauss();
 
         Hasil.displayMatrix();
+
+        Hasil.hasilPara();
     }
 
     public void spl2(){
@@ -68,6 +70,8 @@ public class SPL {
         Hasil = Hasil.gaussJordan();
 
         Hasil.displayMatrix();
+
+        Hasil.hasilPara();
         }
         
 

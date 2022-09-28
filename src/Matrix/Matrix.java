@@ -441,4 +441,15 @@ public Matrix inverseGJ(){
       hasil = inv.multiplyMat(M);
       hasil.displayMatrix();
     }
+
+    public boolean isRowzero(int i){
+      boolean temp = true;
+      for (int j = 0; j<getCol(); j++){
+        if (getElmt(i, j) != 0){
+          temp = false;
+        }
+      }
+      return temp;
+    }
+
 }

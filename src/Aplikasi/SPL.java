@@ -23,7 +23,7 @@ public class SPL {
         A.readMatrix();
         System.out.println("Masukkan matriks B:");
         B.readMatrix();
-        System.out.println("=====================================================================================================");
+        System.out.println("==============================");
 
         Matrix Hasil = new Matrix(row,col+1);
         for (int i = 0; i<row; i++) {
@@ -53,7 +53,7 @@ public class SPL {
         A.readMatrix();
         System.out.println("Masukkan matriks B:");
         B.readMatrix();
-        System.out.println("=====================================================================================================");
+        System.out.println("==============================");
 
         Matrix Hasil = new Matrix(row,col+1);
         for (int i = 0; i<row; i++) {
@@ -68,7 +68,8 @@ public class SPL {
         Hasil = Hasil.gaussJordan();
 
         Hasil.displayMatrix();
-    }
+        }
+        
 
     public void spl3(){
         int row,col;
@@ -77,15 +78,20 @@ public class SPL {
         row = scan.nextInt();
         System.out.println("Masukkan besar kolom matriks B:");
         col = scan.nextInt();
+        if (row == col){
         Matrix A = new Matrix(row, col);
         Matrix B = new Matrix(row,1);
         System.out.println("Masukkan matriks A:");
         A.readMatrix();
         System.out.println("Masukkan matriks B:");
         B.readMatrix();
-        System.out.println("=====================================================================================================");
+        System.out.println("==============================");
 
         A.inversSPL(B);
+        }
+        else {
+            System.out.println("Tidak dapat melakukan metode invers pada matriks yang tidak memiliki baris dan kolom yang sama");
+        }
     }
 
     public void spl4(){
@@ -95,13 +101,14 @@ public class SPL {
         row = scan.nextInt();
         System.out.println("Masukkan besar kolom matriks B:");
         col = scan.nextInt();
+        if (row == col) {
         Matrix A = new Matrix(row, col);
         Matrix B = new Matrix(row,1);
         System.out.println("Masukkan matriks A:");
         A.readMatrix();
         System.out.println("Masukkan matriks B:");
         B.readMatrix();
-        System.out.println("=====================================================================================================");
+        System.out.println("==============================");
 
         Matrix Hasil = new Matrix(row,col+1);
         for (int i = 0; i<row; i++) {
@@ -115,5 +122,9 @@ public class SPL {
 
         Hasil = Hasil.hascreamer();
         Hasil.displayMatrix();
+        }
+        else {
+            System.out.println("Tidak dapat melakukan metode Cramer pada matriks yang tidak memiliki baris dan kolom yang sama");
+        }
     }
 }

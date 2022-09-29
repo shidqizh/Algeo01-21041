@@ -22,7 +22,7 @@ public class SPL {
             row = scan.nextInt();
             System.out.println("Masukkan besar kolom matriks B:");
             col = scan.nextInt();
-            Hasil.setSize(row, col);
+            Hasil.setSize(row, col+1);
             Matrix A = new Matrix(row, col);
             Matrix B = new Matrix(row,1);
             System.out.println("Masukkan matriks A:");
@@ -38,7 +38,7 @@ public class SPL {
                 }
             }
             for (int i = 0;i<row;i++) {
-                Hasil.setElmt(B.getElmt(i, 0), i, col);
+                Hasil.setElmt(B.getElmt(i, 0), i, );
             }
         }
         else {
@@ -71,7 +71,7 @@ public class SPL {
             row = scan.nextInt();
             System.out.println("Masukkan besar kolom matriks B:");
             col = scan.nextInt();
-            Hasil.setSize(row, col);
+            Hasil.setSize(row, col+1);
             Matrix A = new Matrix(row, col);
             Matrix B = new Matrix(row,1);
             System.out.println("Masukkan matriks A:");

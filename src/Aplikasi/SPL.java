@@ -38,7 +38,7 @@ public class SPL {
                 }
             }
             for (int i = 0;i<row;i++) {
-                Hasil.setElmt(B.getElmt(i, 0), i,col);
+                Hasil.setElmt(B.getElmt(i, 0), i,Hasil.getCol()-1);
             }
         }
         else {
@@ -87,7 +87,7 @@ public class SPL {
                 }
             }
             for (int i = 0;i<row;i++) {
-                Hasil.setElmt(B.getElmt(i, 0), i, col);
+                Hasil.setElmt(B.getElmt(i, 0), i, Hasil.getCol()-1);
             }
         }
         else {

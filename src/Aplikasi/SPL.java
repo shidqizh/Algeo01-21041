@@ -129,7 +129,7 @@ public class SPL {
         hasil = A.inversSPL(B);
 
         for (int i=0; i < hasil.getRow(); i++ ) {
-            System.out.printf("x%d = %.2f", i, hasil.getElmt(i, 0));
+            System.out.printf("x%d = %.2f\n", i, hasil.getElmt(i, 0));
         }
         }
         else {

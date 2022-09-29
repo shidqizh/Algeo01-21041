@@ -15,6 +15,7 @@ public class main {
             System.out.println("1. Sistem Persamaan Linier\n2. Determinan\n3. Matriks balikan\n4. Interpolasi Polinom\n5. Interpolasi Bicubic\n6. Regresi linier berganda\n7. Keluar");
             System.out.println("Pilihan: ");
             pil = scan.nextInt();
+            System.out.println("");
             if (pil != 7) {
                 menu.pilihan(pil);
                 System.out.println("==================== SELESAI ====================");

@@ -18,6 +18,7 @@ public class Menu {
                 SPL s = new SPL();
                 System.out.println("METODE");
                 System.out.println("1. Metode Eliminasi Gauss\n2. Metode Eliminasi Gauss-Jordan\n3. Metode Balikan\n4. Metode Cramer");
+                System.out.println("Pilihan: ");
                 y = scan.nextInt();
                 switch(y) {
                     case 1:

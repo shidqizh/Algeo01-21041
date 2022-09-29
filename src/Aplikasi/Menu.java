@@ -50,7 +50,7 @@ public class Menu {
                 y = scan.nextInt();
                 switch(y) {
                     case 1:
-                        String f = "1.txt";
+                        String f = "1.txt"; // ini gabisa2 direfer directory pathnya gila dah gw otak atik
                         Matrix nm = IO.fileToMatrix(f);
                         nm.determinant();
                         nm.displayMatrix();
@@ -59,6 +59,10 @@ public class Menu {
                     case 2:
                         d.gaussdet();
                         break;
+                    default:
+                        System.out.println("\nMohon masukkan input yang sesuai!");
+                        break;
+                
                 }
                 break;
             case 3:
@@ -73,6 +77,10 @@ public class Menu {
                     case 2:
                         inv.invKofDet();
                         break;
+                    default:
+                        System.out.println("\nMohon masukkan input yang sesuai!");
+                        break;
+                
                 }
                 break;
             case 4:
@@ -84,6 +92,9 @@ public class Menu {
                 bik.InpolBikubik();
                 break;
             case 6:
+                break;
+            default:
+                System.out.println("\nMohon masukkan input yang sesuai!");
                 break;
         }
     }

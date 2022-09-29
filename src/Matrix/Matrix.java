@@ -37,6 +37,7 @@ public class Matrix{
     public void setSize(int row, int col) {
       this.row = row;
       this.col = col;
+      this.matrix = new double [row][col];
     }
     
     public int getCol(){
@@ -439,12 +440,12 @@ public Matrix inverseGJ(){
       return mtemp;
     }
 
-    public void inversSPL(Matrix M){
+    public Matrix inversSPL(Matrix M){
       Matrix inv = new Matrix(getRow(),getCol());
       inv = inverseGJ();
       Matrix hasil = new Matrix(getRow(),1);
       hasil = inv.multiplyMat(M);
-      hasil.displayMatrix();
+      return hasil;
     }
 
     public boolean isRowzero(int i){
@@ -479,21 +480,25 @@ public Matrix inverseGJ(){
 
       if (!solv){
         for (i = 0; i<getRow();i++){
-          c=0;
-          for (j=0;j<getCol();j++){
-            if (j!=getCol()-1){
-              if (m.getElmt(i, j)!=0) {
-                if (c==0){
-                  System.out.printf("%fx%d",m.getElmt(i, j),j);
-                  c++;
-                }
-                else{
-                  System.out.printf(" + %fx%d " + m.getElmt(i, j)+"x",j);
+          if (!isRowzero(i)){
+            c=0;
+            for (j=0;j<getCol();j++){
+              if (j!=getCol()-1){
+                if (m.getElmt(i, j)!=0) {
+                  if (c==0){
+                    System.out.printf("%.2fx%d",m.getElmt(i, j),j);
+                    c++;
+                  }
+                  else{
+                    System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j);
+                  }
                 }
               }
-            }
-            else{
-              System.out.printf(" = %f\n", m.getElmt(i, j));
+              else{
+                if (c!=0){
+                  System.out.printf(" = %.2f\n", m.getElmt(i, j));
+                }
+              }
             }
           }
         } 
@@ -506,21 +511,25 @@ public Matrix inverseGJ(){
         }
         if (solv){
           for (i = 0; i<getRow();i++){
-            c=0;
-            for (j=0;j<getCol();j++){
-              if (j!=getCol()-1){
-                if (m.getElmt(i, j)!=0) {
-                  if (c==0){
-                    System.out.printf("%fx%d",m.getElmt(i, j),j);
-                    c++;
-                  }
-                  else{
-                    System.out.printf(" + %fx%d " + m.getElmt(i, j)+"x",j);
+            if (!isRowzero(i)){
+              c=0;
+              for (j=0;j<getCol();j++){
+                if (j!=getCol()-1){
+                  if (m.getElmt(i, j)!=0) {
+                    if (c==0){
+                      System.out.printf("%.2fx%d",m.getElmt(i, j),j);
+                      c++;
+                    }
+                    else{
+                      System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j);
+                    }
                   }
                 }
-              }
-              else{
-                System.out.printf(" = %f\n", m.getElmt(i, j));
+                else{
+                  if (c != 0) {
+                    System.out.printf(" = %.2f\n", m.getElmt(i, j));
+                  }
+                }
               }
             }
           } 

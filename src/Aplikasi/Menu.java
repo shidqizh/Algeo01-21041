@@ -68,6 +68,8 @@ public class Menu {
                 inpol.InpolPolinom();
                 break;
             case 5:
+            InterpolasiBikubik bik = new InterpolasiBikubik();
+                bik.InpolBikubik();
                 break;
             case 6:
                 break;

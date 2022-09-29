@@ -12,12 +12,11 @@ public class SPL {
 
     public void spl1(){
         int row,col;
-        String aug;
-        System.out.println("Augmented? [Y/N]");
-        aug = scan.next();
+        int aug;
+        System.out.println("Augmented? [0=No/1=Yes]");
+        aug = scan.nextInt();
         Matrix Hasil = new Matrix();
-        System.out.println("testestes");
-        if (aug == "N") {
+        if (aug == 0) { 
             System.out.println("Sistem Matriks yang digunakan adalah Ax = B");
             System.out.println("Masukkan besar baris matriks A:");
             row = scan.nextInt();
@@ -53,18 +52,18 @@ public class SPL {
         
         Hasil = Hasil.gauss();
         Hasil.displayMatrix();
-
+        Hasil.hasilPara();
 
     }
 
     public void spl2(){
         int row,col;
-        String aug;
-        System.out.println("Augmented? [Y/N]");
-        aug = scan.next();
+        int aug;
+        System.out.println("Augmented? [0=No/1=Yes]");
+        aug = scan.nextInt();
         Matrix Hasil = new Matrix();
 
-        if (aug == "N") {
+        if (aug == 0) {
             System.out.println("Sistem Matriks yang digunakan adalah Ax = B");
             System.out.println("Masukkan besar baris matriks A:");
             row = scan.nextInt();
@@ -99,9 +98,8 @@ public class SPL {
         }
         
         Hasil = Hasil.gaussJordan();
-        Hasil.hasilPara();
         Hasil.displayMatrix();
-
+        Hasil.hasilPara();
         }
         
 

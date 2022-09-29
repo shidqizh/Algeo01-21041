@@ -440,12 +440,12 @@ public Matrix inverseGJ(){
       return mtemp;
     }
 
-    public void inversSPL(Matrix M){
+    public Matrix inversSPL(Matrix M){
       Matrix inv = new Matrix(getRow(),getCol());
       inv = inverseGJ();
       Matrix hasil = new Matrix(getRow(),1);
       hasil = inv.multiplyMat(M);
-      hasil.displayMatrix();
+      return hasil;
     }
 
     public boolean isRowzero(int i){

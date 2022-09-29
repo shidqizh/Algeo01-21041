@@ -112,10 +112,10 @@ public class SPL {
     public void spl3(){
         int row,col;
         System.out.println("Sistem Matriks yang digunakan adalah Ax = B");
-        System.out.println("Masukkan besar baris matriks A:");
-        row = scan.nextInt();
-        System.out.println("Masukkan besar kolom matriks B:");
+        System.out.println("Masukkan besar kolom matriks A:");
         col = scan.nextInt();
+        System.out.println("Masukkan besar baris matriks B:");
+        row = scan.nextInt();
         if (row == col){
         Matrix A = new Matrix(row, col);
         Matrix B = new Matrix(row,1);
@@ -124,8 +124,13 @@ public class SPL {
         System.out.println("Masukkan matriks B:");
         B.readMatrix();
         System.out.println("==============================");
+        
+        Matrix hasil = new Matrix(row, 1);
+        hasil = A.inversSPL(B);
 
-        A.inversSPL(B);
+        for (int i=0; i < hasil.getRow(); i++ ) {
+            System.out.printf("x%d = %.2f", i, hasil.getElmt(i, 0));
+        }
         }
         else {
             System.out.println("Tidak dapat melakukan metode invers pada matriks yang tidak memiliki baris dan kolom yang sama");
@@ -135,10 +140,10 @@ public class SPL {
     public void spl4(){
         int row,col;
         System.out.println("Sistem Matriks yang digunakan adalah Ax = B");
-        System.out.println("Masukkan besar baris matriks A:");
-        row = scan.nextInt();
-        System.out.println("Masukkan besar kolom matriks B:");
+        System.out.println("Masukkan besar kolom matriks A:");
         col = scan.nextInt();
+        System.out.println("Masukkan besar baris matriks B:");
+        row = scan.nextInt();
         if (row == col) {
         Matrix A = new Matrix(row, col);
         Matrix B = new Matrix(row,1);
@@ -159,7 +164,10 @@ public class SPL {
         }
 
         Hasil = Hasil.hascreamer();
-        Hasil.displayMatrix();
+
+        for (int i=0; i < Hasil.getRow(); i++ ) {
+            System.out.printf("x%d = %.2f", i, Hasil.getElmt(i, 0));
+        }
         }
         else {
             System.out.println("Tidak dapat melakukan metode Cramer pada matriks yang tidak memiliki baris dan kolom yang sama");

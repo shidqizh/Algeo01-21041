@@ -495,7 +495,9 @@ public Matrix inverseGJ(){
                 }
               }
               else{
-                System.out.printf(" = %.2f\n", m.getElmt(i, j));
+                if (c!=0){
+                  System.out.printf(" = %.2f\n", m.getElmt(i, j));
+                }
               }
             }
           }
@@ -524,7 +526,9 @@ public Matrix inverseGJ(){
                   }
                 }
                 else{
-                  System.out.printf(" = %.2f\n", m.getElmt(i, j));
+                  if (c != 0) {
+                    System.out.printf(" = %.2f\n", m.getElmt(i, j));
+                  }
                 }
               }
             }

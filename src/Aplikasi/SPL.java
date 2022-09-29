@@ -18,10 +18,10 @@ public class SPL {
         Matrix Hasil = new Matrix(1,1);
         if (aug == 0) { 
             System.out.println("Sistem Matriks yang digunakan adalah Ax = B");
-            System.out.println("Masukkan besar baris matriks A:");
-            row = scan.nextInt();
-            System.out.println("Masukkan besar kolom matriks B:");
+            System.out.println("Masukkan besar kolom matriks A:");
             col = scan.nextInt();
+            System.out.println("Masukkan besar bariss matriks B:");
+            row = scan.nextInt();
             int nc = col+1;
             Hasil.setSize(row, nc);
             Matrix A = new Matrix(row, col);

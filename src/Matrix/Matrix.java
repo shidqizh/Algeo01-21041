@@ -489,7 +489,7 @@ public Matrix inverseGJ(){
                   c++;
                 }
                 else{
-                  System.out.printf(" + %.2fx%d " + m.getElmt(i, j)+"x",j);
+                  System.out.printf(" + %.2fx%d " , m.getElmt(i, j)+"x",j);
                 }
               }
             }
@@ -516,7 +516,7 @@ public Matrix inverseGJ(){
                     c++;
                   }
                   else{
-                    System.out.printf(" + %.2fx%d " + m.getElmt(i, j)+"x",j);
+                    System.out.printf(" + %.2fx%d " , m.getElmt(i, j)+"x",j);
                   }
                 }
               }

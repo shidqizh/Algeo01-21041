@@ -45,7 +45,9 @@ public class SPL {
             System.out.println("Sistem Matriks yang digunakan adalah matriks augmented");
             System.out.println("Masukkan besar baris matriks:");
             row = scan.nextInt();
-            Hasil.setSize(row, row+1);
+            System.out.println("Masukkan besar kolom matriks:");
+            col = scan.nextInt();
+            Hasil.setSize(row, col);
             System.out.println("Masukkan matriks augmented:");
             Hasil.readMatrix();
         }
@@ -92,7 +94,9 @@ public class SPL {
             System.out.println("Sistem Matriks yang digunakan adalah matriks augmented");
             System.out.println("Masukkan besar baris matriks:");
             row = scan.nextInt();
-            Hasil.setSize(row, row+1);
+            System.out.println("Masukkan besar kolom matriks:");
+            col = scan.nextInt();
+            Hasil.setSize(row, col);
             System.out.println("Masukkan matriks augmented:");
             Hasil.readMatrix();
         }

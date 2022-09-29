@@ -480,21 +480,23 @@ public Matrix inverseGJ(){
 
       if (!solv){
         for (i = 0; i<getRow();i++){
-          c=0;
-          for (j=0;j<getCol();j++){
-            if (j!=getCol()-1){
-              if (m.getElmt(i, j)!=0) {
-                if (c==0){
-                  System.out.printf("%.2fx%d",m.getElmt(i, j),j);
-                  c++;
-                }
-                else{
-                  System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j);
+          if (!isRowzero(i)){
+            c=0;
+            for (j=0;j<getCol();j++){
+              if (j!=getCol()-1){
+                if (m.getElmt(i, j)!=0) {
+                  if (c==0){
+                    System.out.printf("%.2fx%d",m.getElmt(i, j),j);
+                    c++;
+                  }
+                  else{
+                    System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j);
+                  }
                 }
               }
-            }
-            else{
-              System.out.printf(" = %.2f\n", m.getElmt(i, j));
+              else{
+                System.out.printf(" = %.2f\n", m.getElmt(i, j));
+              }
             }
           }
         } 

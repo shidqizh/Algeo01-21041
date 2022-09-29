@@ -1,10 +1,15 @@
 package Aplikasi;
 
+
 import java.util.Scanner;
+import java.util.*;
+import Matrix.Matrix;
+import Utility.IO;
 
 public class Menu {
     public Menu(){}
     Scanner scan = new Scanner(System.in);
+    IO io = new IO();
     
     public void list() {
         System.out.println("MENU");
@@ -33,6 +38,9 @@ public class Menu {
                     case 4:
                         s.spl4();
                         break;
+                    default:
+                        System.out.println("\nMohon masukkan input yang sesuai!");
+                        break;
                 }
                 break;
             case 2:
@@ -42,6 +50,10 @@ public class Menu {
                 y = scan.nextInt();
                 switch(y) {
                     case 1:
+                        String f = "1.txt";
+                        Matrix nm = IO.fileToMatrix(f);
+                        nm.determinant();
+                        nm.displayMatrix();
                         d.kofdet();
                         break;
                     case 2:
@@ -68,7 +80,7 @@ public class Menu {
                 inpol.InpolPolinom();
                 break;
             case 5:
-            InterpolasiBikubik bik = new InterpolasiBikubik();
+                InterpolasiBikubik bik = new InterpolasiBikubik();
                 bik.InpolBikubik();
                 break;
             case 6:

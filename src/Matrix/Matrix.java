@@ -37,6 +37,7 @@ public class Matrix{
     public void setSize(int row, int col) {
       this.row = row;
       this.col = col;
+      this.matrix = new double [row][col];
     }
     
     public int getCol(){

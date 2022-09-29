@@ -15,7 +15,7 @@ public class SPL {
         int aug;
         System.out.println("Augmented? [0=No/1=Yes]");
         aug = scan.nextInt();
-        Matrix Hasil = new Matrix();
+        Matrix Hasil = new Matrix(1,1);
         if (aug == 0) { 
             System.out.println("Sistem Matriks yang digunakan adalah Ax = B");
             System.out.println("Masukkan besar baris matriks A:");

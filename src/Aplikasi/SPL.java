@@ -20,7 +20,7 @@ public class SPL {
             System.out.println("Sistem Matriks yang digunakan adalah Ax = B");
             System.out.println("Masukkan besar kolom matriks A:");
             col = scan.nextInt();
-            System.out.println("Masukkan besar bariss matriks B:");
+            System.out.println("Masukkan besar baris matriks B:");
             row = scan.nextInt();
             int nc = col+1;
             Hasil.setSize(row, nc);

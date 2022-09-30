@@ -50,10 +50,11 @@ public class Menu {
                 y = scan.nextInt();
                 switch(y) {
                     case 1:
-                        String f = "1.txt"; // ini gabisa2 direfer directory pathnya gila dah gw otak atik
-                        Matrix nm = IO.fileToMatrix(f);
-                        nm.determinant();
-                        nm.displayMatrix();
+                        //String f = "1.txt"; // ini gabisa2 direfer directory pathnya gila dah gw otak atik
+                        //Matrix nm = IO.fileToMatrix(f);
+                        //IO.outputFileString(f,"tes");
+                        //nm.determinant();
+                       // nm.displayMatrix();
                         d.kofdet();
                         break;
                     case 2:

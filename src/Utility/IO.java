@@ -20,7 +20,7 @@ public class IO {
     public static int findrow(String f){
       int row = 0;
       try{
-        FileReader file = new FileReader(String.format("test/" + f));
+        FileReader file = new FileReader(String.format("https://github.com/shidqizh/Algeo01-21041/tree/main/test/1.txt"));
         BufferedReader bReader = new BufferedReader(file);
         while(bReader.readLine() != null){
           row++;
@@ -35,7 +35,7 @@ public class IO {
     public static int findcol(String f){
       int col = 0;
       try{
-        FileReader file = new FileReader(String.format("test/" + f));
+        FileReader file = new FileReader(String.format("https://github.com/shidqizh/Algeo01-21041/tree/main/test/1.txt"));
         BufferedReader bReader = new BufferedReader(file);
         String line = bReader.readLine();
         String[] lines = line.split(" ");
@@ -51,7 +51,7 @@ public class IO {
     public static Matrix fileToMatrix(String f){
       Matrix nm = new Matrix(findrow(f), findcol(f));
       try{
-        FileReader file = new FileReader(String.format("test/" + f));
+        FileReader file = new FileReader(String.format("https://github.com/shidqizh/Algeo01-21041/tree/main/test/1.txt"));
         BufferedReader bReader = new BufferedReader(file);
         String line;
         int count = 0;

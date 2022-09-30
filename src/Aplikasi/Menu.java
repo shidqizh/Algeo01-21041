@@ -18,6 +18,8 @@ public class Menu {
     
     public void pilihan(int x){
         int y;
+        String namaf;
+        int z;
         switch(x) {
             case 1:
                 SPL s = new SPL();
@@ -50,14 +52,46 @@ public class Menu {
                 y = scan.nextInt();
                 switch(y) {
                     case 1:
-                        String f = "1.txt"; // ini gabisa2 direfer directory pathnya gila dah gw otak atik
-                        Matrix nm = IO.fileToMatrix(f);
-                        nm.determinant();
-                        nm.displayMatrix();
-                        d.kofdet();
+                        System.out.println("INPUT");
+                        System.out.println("1. Input File\n2. Input Keyboard");
+                        z = scan.nextInt();
+                        switch(z){
+                            case 1:
+                                System.out.println("Masukkan nama file (dalam .txt):");
+                                namaf = scan.next();
+                                Matrix nm = IO.fileToMatrix(namaf);
+                                double hasil = nm.determinant();
+                                IO.outputFileDouble(hasil,"output");
+                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                break;
+                            case 2:
+                                d.kofdet();
+                                break;
+                            default:
+                                System.out.println("\nMohon masukkan input yang sesuai!");
+                                break;
+                        }
                         break;
                     case 2:
-                        d.gaussdet();
+                        System.out.println("INPUT");
+                        System.out.println("1. Input File\n2. Input Keyboard");
+                        z = scan.nextInt();
+                        switch(z){
+                            case 1:
+                                System.out.println("Masukkan nama file (dalam .txt):");
+                                namaf = scan.next();
+                                Matrix nm = IO.fileToMatrix(namaf);
+                                double hasil = nm.detGauss();
+                                IO.outputFileDouble(hasil,"output");
+                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                break;
+                            case 2:
+                                d.gaussdet();
+                                break;
+                            default:
+                                System.out.println("\nMohon masukkan input yang sesuai!");
+                                break;
+                        }
                         break;
                     default:
                         System.out.println("\nMohon masukkan input yang sesuai!");
@@ -72,11 +106,46 @@ public class Menu {
                 y = scan.nextInt();
                 switch(y) {
                     case 1:
-                        inv.invGJ();
-                        break;
+                    System.out.println("INPUT");
+                    System.out.println("1. Input File\n2. Input Keyboard");
+                    z = scan.nextInt();
+                    switch(z){
+                        case 1:
+                            System.out.println("Masukkan nama file (dalam .txt):");
+                            namaf = scan.next();
+                            Matrix nm = IO.fileToMatrix(namaf);
+                            Matrix hasil = nm.inverseGJ();
+                            IO.outputFileMatrix(hasil, "output");
+                            System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                            break;
+                        case 2:
+                            inv.invGJ();
+                            break;
+                        default:
+                            System.out.println("\nMohon masukkan input yang sesuai!");
+                            break;
+                    }
+                    break;
                     case 2:
-                        inv.invKofDet();
-                        break;
+                    System.out.println("INPUT");
+                    System.out.println("1. Input File\n2. Input Keyboard");
+                    z = scan.nextInt();
+                    switch(z){
+                        case 1:
+                            System.out.println("Masukkan nama file (dalam .txt):");
+                            namaf = scan.next();
+                            Matrix nm = IO.fileToMatrix(namaf);
+                            Matrix hasil = nm.inverseDet();
+                            IO.outputFileMatrix(hasil, "output");
+                            System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                            break;
+                        case 2:
+                            inv.invKofDet();
+                            break;
+                        default:
+                            System.out.println("\nMohon masukkan input yang sesuai!");
+                            break;
+                    }
                     default:
                         System.out.println("\nMohon masukkan input yang sesuai!");
                         break;
@@ -97,5 +166,6 @@ public class Menu {
                 System.out.println("\nMohon masukkan input yang sesuai!");
                 break;
         }
+    
     }
 }

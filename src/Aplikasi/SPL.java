@@ -210,7 +210,7 @@ public class SPL {
                 Hasil = Hasil.hascreamer();
 
                 for (int i=0; i < Hasil.getRow(); i++ ) {
-                    System.out.printf("x%d = %.2f", i, Hasil.getElmt(i, 0));
+                    System.out.printf("x%d = %.2f\n", i, Hasil.getElmt(i, 0));
                 }
             }
             else {
@@ -230,7 +230,7 @@ public class SPL {
                 Hasil = Hasil.hascreamer();
 
                 for (int i=0; i < Hasil.getRow(); i++ ) {
-                    System.out.printf("x%d = %.2f", i, Hasil.getElmt(i, 0));
+                    System.out.printf("x%d = %.2f\n", i, Hasil.getElmt(i, 0));
                 }
             }
             else{

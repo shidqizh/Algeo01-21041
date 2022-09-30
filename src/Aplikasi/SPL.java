@@ -218,7 +218,7 @@ public class SPL {
             }
         }
         else{
-            System.out.println("Sistem Matriks yang digunakan adalah Ax = B");
+            System.out.println("Sistem Matriks yang digunakan adalah matriks augmented");
             System.out.println("Masukkan besar kolom matriks augmented:");
             col = scan.nextInt();
             System.out.println("Masukkan besar baris matriks augmented:");

@@ -29,16 +29,88 @@ public class Menu {
                 y = scan.nextInt();
                 switch(y) {
                     case 1:
-                        s.spl1();
-                        break;
+                        System.out.println("INPUT");
+                        System.out.println("1. Input File\n2. Input Keyboard");
+                        z = scan.nextInt();
+                        switch(z){
+                            case 1:
+                                System.out.println("Masukkan nama file (dalam .txt):");
+                                namaf = scan.next();
+                                Matrix nm = IO.fileToMatrix(namaf);
+                                Matrix hasil = nm.gauss();
+                                IO.outputFileMatrix(hasil,"output");
+                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                break;
+                            case 2:
+                                s.spl1();
+                                break;
+                            default:
+                                System.out.println("\nMohon masukkan input yang sesuai!");
+                                break;
+                        }
+                        break;    
                     case 2:
-                        s.spl2();
+                        System.out.println("INPUT");
+                        System.out.println("1. Input File\n2. Input Keyboard");
+                        z = scan.nextInt();
+                        switch(z){
+                            case 1:
+                                System.out.println("Masukkan nama file (dalam .txt):");
+                                namaf = scan.next();
+                                Matrix nm = IO.fileToMatrix(namaf);
+                                Matrix hasil = nm.gaussJordan();
+                                IO.outputFileMatrix(hasil,"output");
+                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                break;
+                            case 2:
+                                s.spl2();
+                                break;
+                            default:
+                                System.out.println("\nMohon masukkan input yang sesuai!");
+                                break;
+                        }
                         break;
                     case 3:
-                        s.spl3();
+                        System.out.println("INPUT");
+                        System.out.println("1. Input File\n2. Input Keyboard");
+                        z = scan.nextInt();
+                        switch(z){
+                            case 1:
+                                /* System.out.println("Masukkan nama file (dalam .txt):");
+                                namaf = scan.next();
+                                Matrix nm = IO.fileToMatrix(namaf);
+                                Matrix hasil = nm.inversSPL();
+                                IO.outputFileMatrix(hasil,"output");
+                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                break; */ //nanti gw benerin
+                            case 2:
+                                s.spl3();
+                                break;
+                            default:
+                                System.out.println("\nMohon masukkan input yang sesuai!");
+                                break;
+                        }
                         break;
                     case 4:
-                        s.spl4();
+                        System.out.println("INPUT");
+                        System.out.println("1. Input File\n2. Input Keyboard");
+                        z = scan.nextInt();
+                        switch(z){
+                            case 1:
+                                System.out.println("Masukkan nama file (dalam .txt):");
+                                namaf = scan.next();
+                                Matrix nm = IO.fileToMatrix(namaf);
+                                Matrix hasil = nm.hascreamer();
+                                IO.outputFileMatrix(hasil,"output");
+                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                break;
+                            case 2:
+                                s.spl4();
+                                break;
+                            default:
+                                System.out.println("\nMohon masukkan input yang sesuai!");
+                                break;
+                        }
                         break;
                     default:
                         System.out.println("\nMohon masukkan input yang sesuai!");

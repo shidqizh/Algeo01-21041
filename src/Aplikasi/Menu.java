@@ -76,13 +76,23 @@ public class Menu {
                         z = scan.nextInt();
                         switch(z){
                             case 1:
-                                /* System.out.println("Masukkan nama file (dalam .txt):");
+                                System.out.println("Masukkan nama file (dalam .txt):");
                                 namaf = scan.next();
-                                Matrix nm = IO.fileToMatrix(namaf);
-                                Matrix hasil = nm.inversSPL();
+                                Matrix C = IO.fileToMatrix(namaf);
+                                Matrix A = new Matrix(C.getRow(),C.getCol()-1);
+                                Matrix B = new Matrix(C.getRow(),1);
+                                for (int i = 0; i<C.getRow(); i++) {
+                                    for (int j = 0; j<C.getRow();j++) {
+                                        A.setElmt(C.getElmt(i,j),i,j);
+                                    }
+                                }
+                                for (int i = 0;i<C.getRow();i++) {
+                                    B.setElmt(C.getElmt(i,C.getCol()-1), i, 0);
+                                }
+                                Matrix hasil = A.inversSPL(B);
                                 IO.outputFileMatrix(hasil,"output");
                                 System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
-                                break; */ //nanti gw benerin
+                                break; 
                             case 2:
                                 s.spl3();
                                 break;

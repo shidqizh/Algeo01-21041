@@ -274,7 +274,7 @@ public class Matrix{
     public Matrix gaussJordan() {
       Matrix mg = this.gauss();
       for (int i = mg.getRow()-1; i>0; i--) {
-        for (int j=0; j<i;j++) {
+        for (int j=0; ((j<i) && (j<mg.getCol()));j++) {
           mg.addRow(j, i, -1*mg.getElmt(j,i));
         }
       }

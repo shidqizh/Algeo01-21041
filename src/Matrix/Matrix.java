@@ -201,10 +201,10 @@ public class Matrix{
       for (int i=0; i< getRow();i++){
         for (int j=0; j< getCol();j++) {
           if (j<getCol()-1) {
-            System.out.print(getElmt(i, j) + " ");
+            System.out.printf("%.3f", getElmt(i, j) + " ");
           }
           else {
-            System.out.print(getElmt(i,j));
+            System.out.printf("%.3f", getElmt(i, j));
           }
         }
         if(i<getRow()-1){

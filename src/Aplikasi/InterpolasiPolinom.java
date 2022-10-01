@@ -30,7 +30,8 @@ public class InterpolasiPolinom {
     }
 
     public void InpolPolinom(){
-        int n, i, j, x, y;
+        int n, i, j;
+        double x, y;
         System.out.print("Masukkan jumlah titik yang ingin dimasukkan: ");
         n = scan.nextInt();
         Matrix tmpM = new Matrix(n, n+1);
@@ -38,8 +39,8 @@ public class InterpolasiPolinom {
 
         for (i=0; i<n; i++){
             System.out.print("Masukkan x[" + i + "] y[" + i + "] = ");
-            x = scan.nextInt();
-            y = scan.nextInt();
+            x = scan.nextDouble();
+            y = scan.nextDouble();
             for (j=0; j<n; j++){
                 tmpM.setElmt(Math.pow(x,j), i, j);
             }

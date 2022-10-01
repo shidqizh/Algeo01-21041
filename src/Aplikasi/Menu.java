@@ -25,13 +25,15 @@ public class Menu {
                 SPL s = new SPL();
                 System.out.println("METODE");
                 System.out.println("1. Metode Eliminasi Gauss\n2. Metode Eliminasi Gauss-Jordan\n3. Metode Balikan\n4. Metode Cramer");
-                System.out.println("Pilihan: ");
+                System.out.print("Pilihan: ");
                 y = scan.nextInt();
+                System.out.println("");
                 switch(y) {
                     case 1:
                         System.out.println("INPUT");
-                        System.out.println("1. Input File\n2. Input Keyboard");
+                        System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
+                        System.out.println("");
                         switch(z){
                             case 1:
                                 System.out.println("Masukkan nama file (dalam .txt):");

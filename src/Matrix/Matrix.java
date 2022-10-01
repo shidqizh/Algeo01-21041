@@ -204,7 +204,7 @@ public class Matrix{
             System.out.print(getElmt(i, j) + " ");
           }
           else {
-            System.out.print(getElmt(i,j));
+            System.out.print( getElmt(i, j));
           }
         }
         if(i<getRow()-1){

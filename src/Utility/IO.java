@@ -71,12 +71,9 @@ public class IO {
       
       return nm;
     }
-    public static void inputFile(String f){
-      fileToMatrix(f);
-    }
     public static void outputFileDouble(Double d, String nama){
       try {
-        FileWriter write = new FileWriter("test/"+ nama+".txt");
+        FileWriter write = new FileWriter("test/output/"+ "output_"+nama);
         write.write(Double.toString(d));
         write.close();
 
@@ -87,7 +84,7 @@ public class IO {
     
     public static void outputFileString(String f, String nama){
       try {
-        FileWriter write = new FileWriter("test/"+ nama+".txt");
+        FileWriter write = new FileWriter("test/output/"+"output_"+ nama);
         write.write(f);
         write.close();
 
@@ -95,13 +92,14 @@ public class IO {
         e.printStackTrace();
       }
     }
+
     public static void outputFileMatrix(Matrix m, String nama){
       int i,j;
       String el;
       try {
-        FileWriter write = new FileWriter("test/"+ nama+".txt");
-        for(i=0;i<m.getCol();i++){
-          for(j=0;j<m.getRow();j++){
+        FileWriter write = new FileWriter("test/output/"+"output_"+ nama);
+        for(i=0;i<m.getRow();i++){
+          for(j=0;j<m.getCol();j++){
             el = Double.toString(m.getElmt(i, j));
             write.write(el+" ");
           }
@@ -109,6 +107,43 @@ public class IO {
         }
         write.close();
       } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+    }
+
+    public static void outputFileTafsiranInpol(Matrix m1, Matrix m2, String nama){
+      int i;
+      String el;
+      String s;
+      try {
+        FileWriter write = new FileWriter("test/output/"+"output_"+ nama);
+        for(i=0;i<m1.getRow();i++){
+          el = Double.toString(m1.getElmt(i, 0));
+          s = Double.toString(m2.getElmt(i, 0));
+          write.write("f("+s+") = " + el); 
+          write.write("\n");
+        }
+        write.close();
+      }catch (IOException e) {
+        e.printStackTrace();
+      }
+
+    }
+
+    public static void outputFileTafsiranBikubik(Matrix m, String nama, Double x){
+      String el;
+      String s;
+      String t;
+      try {
+        FileWriter write = new FileWriter("test/output/"+"output_"+ nama);
+        el = Double.toString(x);
+        s = Double.toString(m.getElmt(4, 0));
+        t = Double.toString(m.getElmt(4, 1));
+        write.write("f("+s+","+t+") = " + el); 
+        write.write("\n");
+        write.close();
+      }catch (IOException e) {
         e.printStackTrace();
       }
 

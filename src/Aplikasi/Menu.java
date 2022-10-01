@@ -40,8 +40,9 @@ public class Menu {
                                 namaf = scan.next();
                                 Matrix nm = IO.fileToMatrix(namaf);
                                 Matrix hasil = nm.gauss();
-                                IO.outputFileMatrix(hasil,"output");
-                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                IO.outputFileMatrix(hasil,namaf);
+                                System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                System.out.println("\n");
                                 break;
                             case 2:
                                 s.spl1();
@@ -61,8 +62,9 @@ public class Menu {
                                 namaf = scan.next();
                                 Matrix nm = IO.fileToMatrix(namaf);
                                 Matrix hasil = nm.gaussJordan();
-                                IO.outputFileMatrix(hasil,"output");
-                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                IO.outputFileMatrix(hasil,namaf);
+                                System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                System.out.println("\n");
                                 break;
                             case 2:
                                 s.spl2();
@@ -84,16 +86,18 @@ public class Menu {
                                 Matrix A = new Matrix(C.getRow(),C.getCol()-1);
                                 Matrix B = new Matrix(C.getRow(),1);
                                 for (int i = 0; i<C.getRow(); i++) {
-                                    for (int j = 0; j<C.getRow();j++) {
+                                    for (int j = 0; j<C.getCol()-1;j++) {
                                         A.setElmt(C.getElmt(i,j),i,j);
                                     }
                                 }
                                 for (int i = 0;i<C.getRow();i++) {
                                     B.setElmt(C.getElmt(i,C.getCol()-1), i, 0);
                                 }
-                                Matrix hasil = A.inversSPL(B);
-                                IO.outputFileMatrix(hasil,"output");
-                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                Matrix hasil = new Matrix(C.getRow(), 1);
+                                hasil = A.inversSPL(B);
+                                IO.outputFileMatrix(hasil,namaf);
+                                System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                System.out.println("\n");
                                 break; 
                             case 2:
                                 s.spl3();
@@ -113,8 +117,9 @@ public class Menu {
                                 namaf = scan.next();
                                 Matrix nm = IO.fileToMatrix(namaf);
                                 Matrix hasil = nm.hascreamer();
-                                IO.outputFileMatrix(hasil,"output");
-                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                IO.outputFileMatrix(hasil,namaf);
+                                System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                System.out.println("\n");
                                 break;
                             case 2:
                                 s.spl4();
@@ -145,8 +150,9 @@ public class Menu {
                                 namaf = scan.next();
                                 Matrix nm = IO.fileToMatrix(namaf);
                                 double hasil = nm.determinant();
-                                IO.outputFileDouble(hasil,"output");
-                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                IO.outputFileDouble(hasil,namaf);
+                                System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                System.out.println("\n");
                                 break;
                             case 2:
                                 d.kofdet();
@@ -166,8 +172,9 @@ public class Menu {
                                 namaf = scan.next();
                                 Matrix nm = IO.fileToMatrix(namaf);
                                 double hasil = nm.detGauss();
-                                IO.outputFileDouble(hasil,"output");
-                                System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                                IO.outputFileDouble(hasil,namaf);
+                                System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                System.out.println("\n");
                                 break;
                             case 2:
                                 d.gaussdet();
@@ -198,9 +205,19 @@ public class Menu {
                             System.out.println("Masukkan nama file (dalam .txt):");
                             namaf = scan.next();
                             Matrix nm = IO.fileToMatrix(namaf);
-                            Matrix hasil = nm.inverseGJ();
-                            IO.outputFileMatrix(hasil, "output");
-                            System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                            Double det = nm.determinant();
+                            if(det != 0){
+                                Matrix hasil = nm.inverseGJ();
+                                IO.outputFileMatrix(hasil, namaf);
+                                System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                System.out.println("\n");
+                            }
+                            else{
+                                IO.outputFileString("Matriks tidak memiliki balikan", namaf);
+                                System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                System.out.println("\n");
+                            }
+                            
                             break;
                         case 2:
                             inv.invGJ();
@@ -220,8 +237,9 @@ public class Menu {
                             namaf = scan.next();
                             Matrix nm = IO.fileToMatrix(namaf);
                             Matrix hasil = nm.inverseDet();
-                            IO.outputFileMatrix(hasil, "output");
-                            System.out.println("Hasil telah terbentuk dalam bentuk file output.txt");
+                            IO.outputFileMatrix(hasil, namaf);
+                            System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                            System.out.println("\n");
                             break;
                         case 2:
                             inv.invKofDet();
@@ -238,11 +256,110 @@ public class Menu {
                 break;
             case 4:
                 InterpolasiPolinom inpol = new InterpolasiPolinom();
-                inpol.InpolPolinom();
+                System.out.println("INPUT");
+                System.out.println("1. Input File\n2. Input Keyboard");
+                z = scan.nextInt();
+                switch(z){
+                    case 1:
+                        System.out.println("Masukkan nama file data titik (dalam .txt):");
+                        namaf = scan.next();
+                        Matrix nm = IO.fileToMatrix(namaf);
+                        int row = nm.getRow();
+
+                        Matrix tmpM = new Matrix(row, row+1);
+                        Matrix tmpH = new Matrix(row, row+1);
+                
+                        for (int i=0; i<row; i++){
+                            for (int j=0; j<row; j++){
+                                tmpM.setElmt(Math.pow(nm.getElmt(i,0),j), i, j);
+                            }
+                            tmpM.setElmt(nm.getElmt(i,1), i, row);
+                        }
+                        tmpH = tmpM.gaussJordan();
+
+                        boolean cek = true;
+                        int jwb;
+                        while (cek){
+                            System.out.print("Apakah ingin menghitung nilai taksiran pada fungsi tersebut? \n1. Ya \n2. Tidak \nJawaban : ");
+                            jwb = scan.nextInt();
+                            System.out.println("");
+                            if (jwb == 2){
+                                cek = false;
+                            } else if (jwb == 1) {
+                                System.out.println("Apakah ingin menggunakan file untuk tafsiran? [1=ya/0=tidak]");
+                                int pil = scan.nextInt();
+                                if(pil == 1){
+                                    String namaf2 = scan.next();
+                                    Matrix nm2 = IO.fileToMatrix(namaf2);
+                                    Matrix hasil = new Matrix(nm2.getRow(),1);
+                                    for (int i = 0; i<hasil.getRow();i++) {
+                                        hasil.setElmt(inpol.nilaiTaksiran(tmpM.getRow(),tmpH,nm2.getElmt(i,0)),i,0);
+                                    } 
+                                    IO.outputFileTafsiranInpol(tmpH, nm2, namaf);
+                                    System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                    System.out.println("\n");
+                                    }
+                                else if(pil == 0){
+                                    double fx, hasilT;
+                                    System.out.print("Masukkan nilai x = ");
+                                    fx = scan.nextDouble();
+                                    hasilT = inpol.nilaiTaksiran(nm.getRow(), tmpH, fx);
+                                    System.out.print("\nf(" + fx + ") = " + hasilT);
+                                    System.out.println("\n");    
+                                }
+                                
+                            } else {
+                                System.out.println("Inputan salah! \n");
+                            }
+                        }
+                        
+                        break;
+                    case 2:
+                        inpol.InpolPolinom();
+                        break;
+                    default:
+                        System.out.println("\nMohon masukkan input yang sesuai!");
+                        break;
+                }
                 break;
             case 5:
-                InterpolasiBikubik bik = new InterpolasiBikubik();
-                bik.InpolBikubik();
+                InterpolasiBikubik inbik = new InterpolasiBikubik();
+                System.out.println("INPUT");
+                System.out.println("1. Input File\n2. Input Keyboard");
+                z = scan.nextInt();
+                switch(z){
+                    case 1:
+                        System.out.println("Masukkan nama file data (dalam .txt):");
+                        namaf = scan.next();
+                        Matrix nm = IO.fileToMatrix(namaf);
+                        int row = nm.getRow();
+
+                        Matrix tmpM = new Matrix(row, row+1);
+                        Matrix tmpH = new Matrix(row, row+1);
+                
+                        for (int i=0; i<row; i++){
+                            for (int j=0; j<row; j++){
+                                tmpM.setElmt(Math.pow(nm.getElmt(i,0),j), i, j);
+                            }
+                            tmpM.setElmt(nm.getElmt(i,1), i, row);
+                        }
+                        tmpH = tmpM.gaussJordan();
+                        
+                        Matrix hasil = new Matrix(nm.getRow(),1);
+                        for (int i = 0; i<hasil.getRow();i++) {
+                            hasil.setElmt(inbik.nilaiTaksiran(tmpM.getRow(),tmpH,nm.getElmt(i,0)),i,0);
+                        } 
+                        IO.outputFileTafsiranInpol(tmpH, nm, namaf);
+                        System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                        System.out.println("\n");
+                        break;
+                    case 2:
+                        inbik.InpolBikubik();
+                        break;
+                    default:
+                        System.out.println("\nMohon masukkan input yang sesuai!");
+                        break;
+                }
                 break;
             case 6:
                 break;

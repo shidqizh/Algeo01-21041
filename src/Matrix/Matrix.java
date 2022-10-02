@@ -488,11 +488,11 @@ public Matrix inverseGJ(){
               if (j!=getCol()-1){
                 if (m.getElmt(i, j)!=0) {
                   if (c==0){
-                    System.out.printf("%.2fx%d",m.getElmt(i, j),j);
+                    System.out.printf("%.2fx%d",m.getElmt(i, j),j+1);
                     c++;
                   }
                   else{
-                    System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j);
+                    System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j+1);
                   }
                 }
               }
@@ -519,11 +519,11 @@ public Matrix inverseGJ(){
                 if (j!=getCol()-1){
                   if (m.getElmt(i, j)!=0) {
                     if (c==0){
-                      System.out.printf("%.2fx%d",m.getElmt(i, j),j);
+                      System.out.printf("%.2fx%d",m.getElmt(i, j),j+1);
                       c++;
                     }
                     else{
-                      System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j);
+                      System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j+1);
                     }
                   }
                 }

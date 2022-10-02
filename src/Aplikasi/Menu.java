@@ -277,6 +277,8 @@ public class Menu {
                         }
                         tmpH = tmpM.gaussJordan();
 
+                        IO.outputFileFungsiInpol(tmpH, row, namaf);
+
                         boolean cek = true;
                         int jwb;
                         while (cek){
@@ -334,24 +336,81 @@ public class Menu {
                         Matrix nm = IO.fileToMatrix(namaf);
                         int row = nm.getRow();
 
-                        Matrix tmpM = new Matrix(row, row+1);
-                        Matrix tmpH = new Matrix(row, row+1);
-                
-                        for (int i=0; i<row; i++){
-                            for (int j=0; j<row; j++){
-                                tmpM.setElmt(Math.pow(nm.getElmt(i,0),j), i, j);
+                        Matrix mm = new Matrix(16,1);
+                        int i, j;
+                        int tmpidx = 0;
+                        for (i=0; i<4; i++){
+                            for (j=0; j<4; j++){
+                                mm.setElmt(nm.getElmt(i, j), tmpidx, 0);
+                                tmpidx += 1;
                             }
-                            tmpM.setElmt(nm.getElmt(i,1), i, row);
                         }
-                        tmpH = tmpM.gaussJordan();
                         
-                        Matrix hasil = new Matrix(nm.getRow(),1);
-                        for (int i = 0; i<hasil.getRow();i++) {
-                            hasil.setElmt(inbik.nilaiTaksiran(tmpM.getRow(),tmpH,nm.getElmt(i,0)),i,0);
-                        } 
-                        IO.outputFileTafsiranInpol(tmpH, nm, namaf);
-                        System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
-                        System.out.println("\n");
+                        Matrix tmpX = new Matrix(16, 16);
+                        int k, l;
+                        int r = 0;
+                        for (i=-1; i<=2; i++){
+                            for (j=-1; j<=2; j++){
+                                int c = 0;
+                                for (k=0; k<=3; k++){
+                                    for (l=0; l<=3; l++){
+                                        tmpX.setElmt((Math.pow(i, k)*(Math.pow(j, l))), r, c);
+                                        c += 1;
+                                    }
+                                }
+                                r += 1;
+                            }
+                        }
+
+                        Matrix hasilIB = new Matrix(16,1);
+                        Matrix tmpInv = new Matrix(16, 16);
+                        tmpInv = tmpX.inverseGJ();
+                        hasilIB = tmpInv.multiplyMat(mm);
+                        
+                        boolean cek = true;
+                        int jwb;
+                        while (cek) {
+                            System.out.print("Apakah ingin menghitung aproksimasi nilai? \n1. Ya \n2. Tidak \nJawaban : ");
+                            jwb = scan.nextInt();
+                            System.out.println("");
+                            if (jwb == 2) {
+                                cek = false;
+                            } else if (jwb == 1) {
+                                System.out.println("Apakah ingin menggunakan data pada file? \n1.Ya\n2.Tidak\n");
+                                int t = scan.nextInt();
+                                if (t==2) {
+                                double nx, ny;
+                                System.out.print("Masukkan nilai x dan y = ");
+                                nx = scan.nextDouble();
+                                ny = scan.nextDouble();
+                                double hasilTak = 0;
+                                int tmpidx1 = 0;
+                                for (i=0; i<=3; i++){
+                                    for (j=0; j<=3; j++){
+                                        hasilTak = hasilTak + (hasilIB.getElmt(tmpidx1, 0) * Math.pow(nx, i) * Math.pow(ny, j));
+                                        tmpidx1 += 1;
+                                    }
+                                }
+                                System.out.println("\nf(" + nx + "," + ny + ") = " + hasilTak + "\n");
+                                }
+                                else if (t==1) {
+                                    double hasilTak = 0;
+                                    int tmpidx1 = 0;
+                                    for (i=0; i<=3; i++){
+                                        for (j=0; j<=3; j++){
+                                            hasilTak = hasilTak + (hasilIB.getElmt(tmpidx1, 0) * Math.pow(nm.getElmt(4, 0), i) * Math.pow(nm.getElmt(4, 1), j));
+                                            tmpidx1 += 1;
+                                        }
+                                    }
+                                    IO.outputFileTafsiranBikubik(nm, namaf, hasilTak );
+                                    System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
+                                    System.out.println("\n");
+                                }
+                            } else {
+                                System.out.println("Inputan salah! \n");
+                            }
+                        }
+
                         break;
                     case 2:
                         inbik.InpolBikubik();

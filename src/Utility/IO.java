@@ -3,7 +3,10 @@ package Utility;
 import java.io.*;
 import java.io.File; 
 import java.io.FileReader;
-import java.util.Scanner; 
+import java.util.Scanner;
+
+import Aplikasi.InterpolasiPolinom;
+
 import java.io.IOException;
 import java.io.BufferedReader;
 
@@ -124,6 +127,42 @@ public class IO {
           write.write("f("+s+") = " + el); 
           write.write("\n");
         }
+        write.close();
+      }catch (IOException e) {
+        e.printStackTrace();
+      }
+
+    }
+
+    public static void outputFileFungsiInpol(Matrix m1, int x, String nama){
+      int i;
+      String el,eli;
+      double in;
+      InterpolasiPolinom inpol = new InterpolasiPolinom();
+      try {
+        FileWriter write = new FileWriter("test/output/"+"output_"+ nama);
+        for(i=0;i<m1.getRow();i++){
+          in = m1.getElmt(i,x);
+          in = inpol.cekOutput(in);
+          el = Double.toString(in);
+          eli = Integer.toString(i);
+          if (i == 0){
+            if (m1.getElmt(i+1, x) < 0){
+                write.write("f(x) = " + el + " - ");
+            } else {
+                write.write("f(x) = " + el + " + ");
+            }
+        } else if (i == x-1) {
+            write.write(el + "(x^" + eli + ")");
+        } else {
+            if (m1.getElmt(i+1, x) < 0){
+                write.write(el + "(x^" + eli + ") - ");
+            } else {
+                write.write(el + "(x^" + eli + ") + ");
+            }
+        }
+        }
+        write.write("\n");
         write.close();
       }catch (IOException e) {
         e.printStackTrace();

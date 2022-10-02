@@ -54,7 +54,9 @@ public class SPL {
         }
         
         Hasil = Hasil.gauss();
+        System.out.println("==============================");
         Hasil.displayMatrix();
+        System.out.println("==============================");
         Hasil.hasilPara();
 
     }
@@ -104,7 +106,9 @@ public class SPL {
         }
         
         Hasil = Hasil.gaussJordan();
+        System.out.println("==============================");
         Hasil.displayMatrix();
+        System.out.println("==============================");
         Hasil.hasilPara();
         }
         

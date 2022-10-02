@@ -54,7 +54,7 @@ public class Menu {
                         break;    
                     case 2:
                         System.out.println("INPUT");
-                        System.out.println("1. Input File\n2. Input Keyboard");
+                        System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
                         switch(z){
                             case 1:
@@ -76,7 +76,7 @@ public class Menu {
                         break;
                     case 3:
                         System.out.println("INPUT");
-                        System.out.println("1. Input File\n2. Input Keyboard");
+                        System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
                         switch(z){
                             case 1:
@@ -109,7 +109,7 @@ public class Menu {
                         break;
                     case 4:
                         System.out.println("INPUT");
-                        System.out.println("1. Input File\n2. Input Keyboard");
+                        System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
                         switch(z){
                             case 1:
@@ -137,12 +137,12 @@ public class Menu {
             case 2:
                 Determinan d = new Determinan();
                 System.out.println("METODE");
-                System.out.println("1. Metode Kofaktor\n2. Metode Eliminasi Gauss-Jordan");
+                System.out.print("1. Metode Kofaktor\n2. Metode Eliminasi Gauss-Jordan\nPilihan: ");
                 y = scan.nextInt();
                 switch(y) {
                     case 1:
                         System.out.println("INPUT");
-                        System.out.println("1. Input File\n2. Input Keyboard");
+                        System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
                         switch(z){
                             case 1:
@@ -164,7 +164,7 @@ public class Menu {
                         break;
                     case 2:
                         System.out.println("INPUT");
-                        System.out.println("1. Input File\n2. Input Keyboard");
+                        System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
                         switch(z){
                             case 1:
@@ -193,12 +193,12 @@ public class Menu {
             case 3:
                 Inverse inv = new Inverse();
                 System.out.println("METODE");
-                System.out.println("1. Metode Eliminasi Gauss-Jordan\n2. Metode Adjoin");
+                System.out.print("1. Metode Eliminasi Gauss-Jordan\n2. Metode Adjoin\nPilihan: ");
                 y = scan.nextInt();
                 switch(y) {
                     case 1:
                     System.out.println("INPUT");
-                    System.out.println("1. Input File\n2. Input Keyboard");
+                    System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                     z = scan.nextInt();
                     switch(z){
                         case 1:
@@ -229,7 +229,7 @@ public class Menu {
                     break;
                     case 2:
                     System.out.println("INPUT");
-                    System.out.println("1. Input File\n2. Input Keyboard");
+                    System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                     z = scan.nextInt();
                     switch(z){
                         case 1:
@@ -257,7 +257,7 @@ public class Menu {
             case 4:
                 InterpolasiPolinom inpol = new InterpolasiPolinom();
                 System.out.println("INPUT");
-                System.out.println("1. Input File\n2. Input Keyboard");
+                System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                 z = scan.nextInt();
                 switch(z){
                     case 1:
@@ -288,7 +288,7 @@ public class Menu {
                             if (jwb == 2){
                                 cek = false;
                             } else if (jwb == 1) {
-                                System.out.println("Apakah ingin menggunakan file untuk tafsiran? [1=ya/0=tidak]");
+                                System.out.print("Apakah ingin menggunakan file untuk tafsiran?\n1.Ya\n2.Tidak\nPilihan: ");
                                 int pil = scan.nextInt();
                                 if(pil == 1){
                                     String namaf2 = scan.next();
@@ -301,7 +301,7 @@ public class Menu {
                                     System.out.printf("Hasil telah terbentuk dalam bentuk file output_%s", namaf);
                                     System.out.println("\n");
                                     }
-                                else if(pil == 0){
+                                else if(pil == 2){
                                     double fx, hasilT;
                                     System.out.print("Masukkan nilai x = ");
                                     fx = scan.nextDouble();
@@ -327,7 +327,7 @@ public class Menu {
             case 5:
                 InterpolasiBikubik inbik = new InterpolasiBikubik();
                 System.out.println("INPUT");
-                System.out.println("1. Input File\n2. Input Keyboard");
+                System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                 z = scan.nextInt();
                 switch(z){
                     case 1:
@@ -376,7 +376,7 @@ public class Menu {
                             if (jwb == 2) {
                                 cek = false;
                             } else if (jwb == 1) {
-                                System.out.println("Apakah ingin menggunakan data pada file? \n1.Ya\n2.Tidak\n");
+                                System.out.print("Apakah ingin menggunakan data pada file? \n1.Ya\n2.Tidak\nPilihan: ");
                                 int t = scan.nextInt();
                                 if (t==2) {
                                 double nx, ny;

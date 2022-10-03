@@ -2,7 +2,6 @@ package Aplikasi;
 
 
 import java.util.Scanner;
-import java.util.*;
 import Matrix.Matrix;
 import Utility.IO;
 
@@ -345,7 +344,6 @@ public class Menu {
                         System.out.println("Masukkan nama file data (dalam .txt):");
                         namaf = scan.next();
                         Matrix nm = IO.fileToMatrix(namaf);
-                        int row = nm.getRow();
 
                         Matrix mm = new Matrix(16,1);
                         int i, j;

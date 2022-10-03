@@ -1,6 +1,7 @@
 package Aplikasi;
 import java.util.Scanner;
 import Matrix.*;
+
 public class Inverse {
     Scanner scan = new Scanner(System.in);
     public Inverse(){
@@ -19,7 +20,6 @@ public class Inverse {
             }
         } while (row != col);
 
-
         Matrix m = new Matrix(row, col);
         System.out.println("Masukkan inputan matriks: ");
         m.readMatrix();
@@ -27,6 +27,7 @@ public class Inverse {
         Matrix nm = m.inverseGJ();
         nm.displayMatrix();
     }
+
     public void invKofDet(){
         int row,col;
         do{
@@ -39,7 +40,6 @@ public class Inverse {
             }
         } while (row != col);
 
-
         Matrix m = new Matrix(row, col);
         System.out.println("Masukkan inputan matriks: ");
         m.readMatrix();
@@ -47,6 +47,5 @@ public class Inverse {
         Matrix nm = m.inverseDet();
         nm.displayMatrix();
 
-    }
-    
+    }   
 }

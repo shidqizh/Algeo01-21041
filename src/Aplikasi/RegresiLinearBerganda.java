@@ -69,6 +69,32 @@ public class RegresiLinearBerganda {
             }
         }
 
+        // tafsiran
+        int pil;
+        boolean cek=true;
+        while (cek) {
+            System.out.println("Apakah ingin menghitung tafsiran nilai pada fungsi tersebut?\n1.Ya\n2.Tidak");
+            System.out.print("Pilahan : ");
+            pil = scan.nextInt(); 
+            System.out.println("");
+            switch (pil) {
+                case 1:
+                    double tempH=hasil.getElmt(0, hasil.getCol());
+                    double in;
+                    for (i=1;i<row;i++){
+                        System.out.printf("x%d = ",i);
+                        in = scan.nextDouble();
+                        tempH = tempH + in*hasil.getElmt(i, hasil.getCol());
+                    }
+                    System.out.printf("y = %.4f", tempH);
+                case 2:
+                    cek = false;
+                    break;
+                default:
+                    System.out.println("Inputan salah!");
+                    break;
+            }
+        }
 
     }
 

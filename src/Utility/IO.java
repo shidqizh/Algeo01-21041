@@ -20,6 +20,7 @@ public class IO {
       return Double.parseDouble(f.split("/")[0]) / Double.parseDouble(f.split("/")[1]);
     }
   }
+
     public static int findrow(String f){
       int row = 0;
       try{
@@ -35,6 +36,7 @@ public class IO {
       }
       return row;
     }
+
     public static int findcol(String f){
       int col = 0;
       try{
@@ -49,8 +51,8 @@ public class IO {
         e.printStackTrace();
       }
       return col;
-
     }
+
     public static Matrix fileToMatrix(String f){
       Matrix nm = new Matrix(findrow(f), findcol(f));
       try{
@@ -70,10 +72,10 @@ public class IO {
       }
       catch(IOException e){
         e.printStackTrace();
-      }
-      
+      } 
       return nm;
     }
+
     public static void outputFileDouble(Double d, String nama){
       try {
         FileWriter write = new FileWriter("test/output/"+ "output_"+nama);
@@ -112,7 +114,6 @@ public class IO {
       } catch (IOException e) {
         e.printStackTrace();
       }
-
     }
 
     public static void outputFileTafsiranInpol(Matrix m1, Matrix m2, String nama){
@@ -128,10 +129,9 @@ public class IO {
           write.write("\n");
         }
         write.close();
-      }catch (IOException e) {
+      } catch (IOException e) {
         e.printStackTrace();
       }
-
     }
 
     public static void outputFileFungsiInpol(Matrix m1, int x, String nama){
@@ -152,22 +152,21 @@ public class IO {
             } else {
                 write.write("f(x) = " + el + " + ");
             }
-        } else if (i == x-1) {
+          } else if (i == x-1) {
             write.write(el + "(x^" + eli + ")");
-        } else {
+          } else {
             if (m1.getElmt(i+1, x) < 0){
                 write.write(el + "(x^" + eli + ") - ");
             } else {
                 write.write(el + "(x^" + eli + ") + ");
             }
-        }
+          }
         }
         write.write("\n");
         write.close();
-      }catch (IOException e) {
+      } catch (IOException e) {
         e.printStackTrace();
       }
-
     }
 
     public static void outputFileTafsiranBikubik(Matrix m, String nama, Double x){
@@ -182,11 +181,8 @@ public class IO {
         write.write("f("+s+","+t+") = " + el); 
         write.write("\n");
         write.close();
-      }catch (IOException e) {
+      } catch (IOException e) {
         e.printStackTrace();
       }
-
     }
-
 }
-

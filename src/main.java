@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 import Aplikasi.Menu;
 
-
 public class main {
     public static void main(String[] agrs) {
         Scanner scan = new Scanner(System.in);
@@ -21,8 +20,7 @@ public class main {
             if (pil != 7) {
                 menu.pilihan(pil);
                 System.out.println("==================== SELESAI ====================");
-            }
-            else {
+            } else {
                 aktif = false;
             }
         }

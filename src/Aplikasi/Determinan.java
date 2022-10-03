@@ -20,7 +20,6 @@ public class Determinan{
             }
         } while (row != col);
 
-
         Matrix m = new Matrix(row, col);
         System.out.println("Masukkan inputan matriks: ");
         m.readMatrix();

@@ -105,6 +105,7 @@ public class RegresiLinearBerganda {
                         tempH = tempH + in*hasil.getElmt(i, hasil.getCol()-1);
                     }
                     System.out.printf("y = %.4f", tempH);
+                    System.out.println("");
                 case 2:
                     cek = false;
                     break;

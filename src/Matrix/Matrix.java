@@ -16,6 +16,7 @@ public class Matrix{
         this.row = row;
         this.matrix = new double [row][col];
     }
+
     public Matrix(int row, int col, double c){
         this.row = row;
         this.col = col;
@@ -24,7 +25,7 @@ public class Matrix{
             this.matrix[i][j] = c;
           }
         }
-      }
+    }
     
     public double getElmt(int i,int j) {
         return this.matrix[i][j];
@@ -63,9 +64,9 @@ public class Matrix{
           }
       }
       return nm;
-  }
+    }
 
-  public Matrix transpose(){
+    public Matrix transpose(){
       int i;
       int j;
       Matrix nm = new Matrix(getCol(),getRow());
@@ -75,7 +76,7 @@ public class Matrix{
           }
       } 
       return nm;
-  }
+    }
 
     public int getFirstIdx(int i){
       int idx = -1;
@@ -124,17 +125,16 @@ public class Matrix{
           tmp = i;
           break;
         }
-        }
-        return tmp;
       }
+      return tmp;
+    }
       
-    
-
     public void addRow(int iP, int i2, double k) {
       for (int j = 0; j<getCol();j++) {
         this.matrix[iP][j] = getElmt(iP,j) + getElmt(i2,j)*k;
       }
     }
+
     Scanner scan = new Scanner(System.in);
     public void readMatrix() {
       for (int i=0; i< getRow();i++){
@@ -145,10 +145,7 @@ public class Matrix{
     }
 
     public double cofac(int r, int c){
-        int i;
-        int j;
-        int ni;
-        int nj;
+        int i, j, ni, nj;
         double cof;
         Matrix nm;
         ni = 0;
@@ -170,15 +167,12 @@ public class Matrix{
             }
             ni++;
         }
-    
         if ((r + c) % 2 == 0){
             cof = nm.determinant();
-        } 
-        else{
+        } else {
             cof = -1*nm.determinant();
         }
-    
-        return cof;
+      return cof;
     }
 
     public double determinant(){
@@ -214,7 +208,6 @@ public class Matrix{
       System.out.print("\n");
     }
 
-
     public boolean isSquare(){
       return (this.getCol() == this.getRow());
     }
@@ -225,8 +218,7 @@ public class Matrix{
       boolean cek = true;
       if(this.isSquare() != true){
            cek = false;
-      }
-      else{
+      } else {
            for(i=0;i<this.getRow()-1;i++){
                for(j=0;j<this.getCol()-1;j++){
                    if (i == j) {
@@ -270,7 +262,6 @@ public class Matrix{
       return tmpM;
     }
 
-
     public Matrix gaussJordan() {
       Matrix mg = this.gauss();
       for (int i = mg.getRow()-1; i>0; i--) {
@@ -294,52 +285,52 @@ public class Matrix{
       return this;
     }
 
-public Matrix createIdentity(int x){
-  Matrix nm = new Matrix(x,x);
-  int i,j;
-  for(i=0;i<x;i++){
-    for(j=0;j<x;j++){
-      if(i == j){
-        nm.setElmt(1, i, j);
+    public Matrix createIdentity(int x){
+      Matrix nm = new Matrix(x,x);
+      int i,j;
+      for(i=0;i<x;i++){
+        for(j=0;j<x;j++){
+          if(i == j){
+            nm.setElmt(1, i, j);
+          }
+          else{
+            nm.setElmt(0, i, j);
+          }
+        }
       }
-      else{
-        nm.setElmt(0, i, j);
+      return nm.gaussJordan();
+    }
+
+    public Matrix multiplyByRow(int row,double x) {
+      for (int i=0; i<getCol(); i++) {
+        setElmt(getElmt(row, i)*x, row , i);
       }
+      return this;
     }
-  }
-  return nm.gaussJordan();
-}
 
-public Matrix multiplyByRow(int row,double x) {
-  for (int i=0; i<getCol(); i++) {
-    setElmt(getElmt(row, i)*x, row , i);
-  }
-  return this;
-}
-public Matrix inverseGJ(){
-  Matrix id = createIdentity(getRow());
-  Matrix nm = new Matrix(getRow(),2*getCol());
-  for(int i=0;i<getRow();i++){
-    for(int j=0;j<getCol();j++){
-      nm.setElmt(getElmt(i, j), i, j);
-      nm.setElmt(id.getElmt(i, j), i, j+getCol());
+    public Matrix inverseGJ(){
+      Matrix id = createIdentity(getRow());
+      Matrix nm = new Matrix(getRow(),2*getCol());
+      for(int i=0;i<getRow();i++){
+        for(int j=0;j<getCol();j++){
+          nm.setElmt(getElmt(i, j), i, j);
+          nm.setElmt(id.getElmt(i, j), i, j+getCol());
+        }
+      }
+      nm = nm.gauss();
+      for (int i = nm.getRow()-1; i>0; i--) {
+        for (int j=0; j<i;j++) {
+          nm.addRow(j, i, -1*nm.getElmt(j,nm.getFirstIdx(i)));
+        }
+      }
+      Matrix hasil = new Matrix(getRow(),getCol());
+      for(int i=0;i<getRow();i++){
+        for(int j=0;j<getCol();j++){
+          hasil.setElmt(nm.getElmt(i, j+getCol()), i, j);
+        }
+      }
+      return hasil;
     }
-  }
-  nm = nm.gauss();
-  for (int i = nm.getRow()-1; i>0; i--) {
-    for (int j=0; j<i;j++) {
-      nm.addRow(j, i, -1*nm.getElmt(j,nm.getFirstIdx(i)));
-    }
-  }
-  Matrix hasil = new Matrix(getRow(),getCol());
-  for(int i=0;i<getRow();i++){
-    for(int j=0;j<getCol();j++){
-      hasil.setElmt(nm.getElmt(i, j+getCol()), i, j);
-    }
-  }
-  return hasil;
-}
-
 
     public Matrix inverseDet(){
       Matrix kofak = new Matrix(getRow(), getCol());
@@ -351,11 +342,11 @@ public Matrix inverseGJ(){
           kofak.setElmt(cofac(i, j), i, j);
         }
       }
-
       adj = kofak.transpose();
       double det = this.determinant();
       return adj.multiplyByConst(1/det);
     }
+
     public Matrix swapColCre(int j){
       Matrix tmpM = new Matrix(getRow(),getRow());
       int i, k;
@@ -390,7 +381,7 @@ public Matrix inverseGJ(){
         det2 = tmpDet2.determinant();
         tmpM.setElmt(det2/det1, j, 0);
       }
-    return tmpM;
+      return tmpM;
     }
 
     public double detGauss(){
@@ -490,13 +481,11 @@ public Matrix inverseGJ(){
                   if (c==0){
                     System.out.printf("%.2fx%d",m.getElmt(i, j),j+1);
                     c++;
-                  }
-                  else{
+                  } else {
                     System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j+1);
                   }
                 }
-              }
-              else{
+              } else {
                 if (c!=0){
                   System.out.printf(" = %.2f\n", m.getElmt(i, j));
                 }
@@ -504,8 +493,7 @@ public Matrix inverseGJ(){
             }
           }
         } 
-      }
-      else{
+      } else {
         for (i=0;i<getRow();i++){
           if (a.isRowzero(i)){
             solv = false;
@@ -521,13 +509,11 @@ public Matrix inverseGJ(){
                     if (c==0){
                       System.out.printf("%.2fx%d",m.getElmt(i, j),j+1);
                       c++;
-                    }
-                    else{
+                    } else {
                       System.out.printf(" + %.2fx%d " , m.getElmt(i, j),j+1);
                     }
                   }
-                }
-                else{
+                } else {
                   if (c != 0) {
                     System.out.printf(" = %.2f\n", m.getElmt(i, j));
                   }
@@ -535,11 +521,9 @@ public Matrix inverseGJ(){
               }
             }
           } 
-        }
-        else{
+        } else {
           System.out.println("Tidak ada nilai x yang memenuhi");
         }
       }
     }
-
 }

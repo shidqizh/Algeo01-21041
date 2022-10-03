@@ -38,7 +38,7 @@ public class RegresiLinearBerganda {
             }
         }
         
-        Matrix tmpH = new Matrix(col, col+1);
+        Matrix tmpH = new Matrix(col+1, col+2);
 
         for (i = 0; i<tmpH.getRow();i++){
             for (j = 0; j<tmpH.getCol();j++){
@@ -55,7 +55,7 @@ public class RegresiLinearBerganda {
                 }
                 else {
                     for (k=0;k<row;k++) {
-                        tempC = tempC + tmpM.getElmt(k, i)*tmpM.getElmt(k, j);
+                        tempC = tempC + tmpM.getElmt(k, i-1)*tmpM.getElmt(k, j-1);
                     }
                 }
                 tmpH.setElmt(tempC, i, j);

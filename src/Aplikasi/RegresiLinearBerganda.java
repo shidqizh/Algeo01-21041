@@ -18,20 +18,20 @@ public class RegresiLinearBerganda {
         System.out.print("Masukkan banyaknya titik yang digunakan: ");
         col = scan.nextInt();
 
-        System.out.println("Masukkan banyaknya data yang digunakan: ");
+        System.out.print("Masukkan banyaknya data yang digunakan: ");
         row = scan.nextInt();
 
         Matrix tmpM = new Matrix(row,col+1);
         System.out.println("Masukkan data yang digunakan");
 
         for (i = 0;i<tmpM.getRow(); i++){
-            System.out.printf("Data ke=%d",i);
+            System.out.printf("Data ke=%d\n",i+1);
             for (j=0;j<tmpM.getCol();j++) {
                 if (j == tmpM.getCol()-1) {
                     System.out.printf("y = ");
                 }
                 else{
-                    System.out.printf("x&d = ",j+1);
+                    System.out.printf("x%d = ",j+1);
                 }
                 temp = scan.nextDouble();
                 tmpM.setElmt(temp, i, j);

@@ -432,6 +432,8 @@ public class Menu {
                 }
                 break;
             case 6:
+                RegresiLinearBerganda rlb = new RegresiLinearBerganda();
+                rlb.regresi();
                 break;
             default:
                 System.out.println("\nMohon masukkan input yang sesuai!");

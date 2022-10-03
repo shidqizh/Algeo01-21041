@@ -48,8 +48,7 @@ public class RegresiLinearBerganda {
                         tempC = row;
                     }
                     else {
-                        for (k=0;k<row;k++) {
-                            
+                        for (k=0;k<row;k++) {                            
                             tempC = tempC + tmpM.getElmt(k, j-1);
                         }
                     }
@@ -103,7 +102,7 @@ public class RegresiLinearBerganda {
                     for (i=1;i<row;i++){
                         System.out.printf("x%d = ",i);
                         in = scan.nextDouble();
-                        tempH = tempH + in*hasil.getElmt(i, hasil.getCol());
+                        tempH = tempH + in*hasil.getElmt(i, hasil.getCol()-1);
                     }
                     System.out.printf("y = %.4f", tempH);
                 case 2:

@@ -25,7 +25,7 @@ public class RegresiLinearBerganda {
         System.out.println("Masukkan data yang digunakan");
 
         for (i = 0;i<tmpM.getRow(); i++){
-            System.out.printf("Data ke=%d\n",i+1);
+            System.out.printf("Data ke-%d\n",i+1);
             for (j=0;j<tmpM.getCol();j++) {
                 if (j == tmpM.getCol()-1) {
                     System.out.printf("y = ");
@@ -41,7 +41,7 @@ public class RegresiLinearBerganda {
         Matrix tmpH = new Matrix(col, col+1);
 
         for (i = 0; i<tmpH.getRow();i++){
-            for (j = 0; i<tmpH.getCol()-1;){
+            for (j = 0; j<tmpH.getCol()-1;j++){
                 tempC =0;
                 if (i==0 && j==0) {
                     tempC = row;

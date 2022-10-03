@@ -433,7 +433,106 @@ public class Menu {
                 break;
             case 6:
                 RegresiLinearBerganda rlb = new RegresiLinearBerganda();
-                rlb.regresi();
+                System.out.println("INPUT");
+                System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
+                z = scan.nextInt();
+                System.out.println("");
+                switch (z) {
+                    case 1:
+                    System.out.println("Masukkan nama file data (dalam .txt):");
+                    namaf = scan.next();
+                    Matrix tmpM = IO.fileToMatrix(namaf);
+                    int row,col;
+                    int i,j,k;
+                    double temp;
+                    double tempC;
+                    col = tmpM.getCol();
+                    row = tmpM.getRow();
+                    
+                    Matrix tmpH = new Matrix(col+1, col+2);
+            
+                    for (i = 0; i<tmpH.getRow();i++){
+                        for (j = 0; j<tmpH.getCol();j++){
+                            tempC =0;
+                            if (i==0) {
+                                if (j == 0) {
+                                    tempC = row;
+                                }
+                                else {
+                                    for (k=0;k<row;k++) {
+                                        
+                                        tempC = tempC + tmpM.getElmt(k, j-1);
+                                    }
+                                }
+                            }
+                            else {
+                                if (j!=0){
+                                    for (k=0;k<row;k++) {
+                                        tempC = tempC + tmpM.getElmt(k, i-1)*tmpM.getElmt(k, j-1);
+                                    }
+                                }
+                                else {
+                                    for (k=0;k<row;k++) {
+                                        tempC = tempC + tmpM.getElmt(k, i-1);
+                                    }
+                                }
+            
+                            }
+                            tmpH.setElmt(tempC, i, j);
+                        }
+                    }
+            
+                    
+                    
+                    Matrix hasil = new Matrix(tmpH.getRow(), tmpH.getCol());
+                    hasil = tmpH.gaussJordan();
+                    hasil.displayMatrix();
+                    // display
+            
+                    for (i = 0; i<hasil.getRow();i++){
+                        if (i==0) {
+                            System.out.printf("y = (%.4f)", hasil.getElmt(i,hasil.getCol()-1), i);
+                        }
+                        else {
+                            System.out.printf(" + (%.4f)x%d", hasil.getElmt(i,hasil.getCol()-1), i);
+                        }
+                    }
+                    System.out.println("");
+            
+                    // tafsiran
+                    int pil;
+                    boolean cek=true;
+                    while (cek) {
+                        System.out.println("Apakah ingin menghitung tafsiran nilai pada fungsi tersebut?\n1.Ya\n2.Tidak");
+                        System.out.print("Pilahan : ");
+                        pil = scan.nextInt(); 
+                        System.out.println("");
+                        switch (pil) {
+                            case 1:
+                                double tempH=hasil.getElmt(0, hasil.getCol());
+                                double in;
+                                for (i=1;i<row;i++){
+                                    System.out.printf("x%d = ",i);
+                                    in = scan.nextDouble();
+                                    tempH = tempH + in*hasil.getElmt(i, hasil.getCol());
+                                }
+                                System.out.printf("y = %.4f", tempH);
+                            case 2:
+                                cek = false;
+                                break;
+                            default:
+                                System.out.println("Inputan salah!");
+                                break;
+                        }
+                    }
+                    break;
+                    case 2:
+                    rlb.regresi();
+                    break;
+                    default :
+                    System.out.println("\nMohon masukkan input yang sesuai!");
+                    break;
+                }
                 break;
             default:
                 System.out.println("\nMohon masukkan input yang sesuai!");

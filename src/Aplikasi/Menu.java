@@ -448,7 +448,7 @@ public class Menu {
                     col = tmpM.getCol();
                     row = tmpM.getRow();
                     
-                    Matrix tmpH = new Matrix(col+1, col+2);
+                    Matrix tmpH = new Matrix(col, col+1);
             
                     for (i = 0; i<tmpH.getRow();i++){
                         for (j = 0; j<tmpH.getCol();j++){

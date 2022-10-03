@@ -13,3 +13,24 @@ menyelesaikan persoalan interpolasi, dan persoalan regresi.
 1. Muhammad Hanan (13521041)
 2. Alex Sander (13521061)
 3. Shidqi Indy Izhari (13521097)
+
+## Bahasa Pemrograman yang Digunakan
+- Java
+
+## Fitur
+1. Mencari solusi dari sistem persamaan linier dengan munggunakan metode gauss, gauss jordan, inverse, dan cramer.
+2. Mencari determinan matriks menggunakan metode kovaktor dan gauss.
+3. Mencari inverse matriks menggunakan metode gauss jordan dan adjoin.
+4. Menyelesaikan masalah interpolasi polinom.
+5. Menyelesaikan masalah interpolasi bikubik.
+6. Menyelesaikan masalah regresi linier berganda.
+
+## Terimakasih Kepada
+1. Tuhan YME
+2. Orang Tua
+3. Dosen pengampu mata kuliah
+4. Asisten tugas besar
+5. Anggota yang gg gemink
+
+## Foto Anggota 
+![S__28999685](https://user-images.githubusercontent.com/92153837/193618066-4ad5a45c-fcc1-4cb1-84b0-c32ad4863329.jpg)

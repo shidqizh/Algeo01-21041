@@ -49,6 +49,7 @@ public class RegresiLinearBerganda {
                     }
                     else {
                         for (k=0;k<row;k++) {
+                            
                             tempC = tempC + tmpM.getElmt(k, j-1);
                         }
                     }

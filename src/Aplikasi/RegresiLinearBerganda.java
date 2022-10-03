@@ -1,7 +1,5 @@
 package Aplikasi;
-
 import java.util.Scanner;
-
 import Matrix.Matrix;
 
 public class RegresiLinearBerganda {
@@ -46,31 +44,25 @@ public class RegresiLinearBerganda {
                 if (i==0) {
                     if (j == 0) {
                         tempC = row;
-                    }
-                    else {
+                    } else {
                         for (k=0;k<row;k++) {                            
                             tempC = tempC + tmpM.getElmt(k, j-1);
                         }
                     }
-                }
-                else {
+                } else {
                     if (j!=0){
                         for (k=0;k<row;k++) {
                             tempC = tempC + tmpM.getElmt(k, i-1)*tmpM.getElmt(k, j-1);
                         }
-                    }
-                    else {
+                    } else {
                         for (k=0;k<row;k++) {
                             tempC = tempC + tmpM.getElmt(k, i-1);
                         }
                     }
-
                 }
                 tmpH.setElmt(tempC, i, j);
             }
         }
-
-        
         
         Matrix hasil = new Matrix(tmpH.getRow(), tmpH.getCol());
         hasil = tmpH.gaussJordan();
@@ -115,7 +107,5 @@ public class RegresiLinearBerganda {
                     break;
             }
         }
-
     }
-
 }

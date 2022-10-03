@@ -98,7 +98,7 @@ public class RegresiLinearBerganda {
             System.out.println("");
             switch (pil) {
                 case 1:
-                    double tempH=hasil.getElmt(0, hasil.getCol());
+                    double tempH=hasil.getElmt(0, hasil.getCol()-1);
                     double in;
                     for (i=1;i<row;i++){
                         System.out.printf("x%d = ",i);

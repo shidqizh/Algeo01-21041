@@ -298,7 +298,7 @@ public class Menu {
                             if (jwb == 2){
                                 cek = false;
                             } else if (jwb == 1) {
-                                System.out.print("Apakah ingin menggunakan file untuk tafsiran?\n1.Ya\n2.Tidak\nPilihan: ");
+                                System.out.print("Apakah ingin menggunakan file untuk taksiran?\n1.Ya\n2.Tidak\nPilihan: ");
                                 int pil = scan.nextInt();
                                 if(pil == 1){
                                     String namaf2 = scan.next();
@@ -502,7 +502,7 @@ public class Menu {
                     int pil;
                     boolean cek=true;
                     while (cek) {
-                        System.out.println("Apakah ingin menghitung tafsiran nilai pada fungsi tersebut?\n1.Ya\n2.Tidak");
+                        System.out.println("Apakah ingin menghitung nilai taksiran pada fungsi tersebut?\n1.Ya\n2.Tidak");
                         System.out.print("Pilahan : ");
                         pil = scan.nextInt(); 
                         System.out.println("");

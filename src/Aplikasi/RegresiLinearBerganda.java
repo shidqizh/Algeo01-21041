@@ -91,7 +91,7 @@ public class RegresiLinearBerganda {
         int pil;
         boolean cek=true;
         while (cek) {
-            System.out.println("Apakah ingin menghitung tafsiran nilai pada fungsi tersebut?\n1.Ya\n2.Tidak");
+            System.out.println("Apakah ingin menghitung nilai taksiran pada fungsi tersebut?\n1.Ya\n2.Tidak");
             System.out.print("Pilahan : ");
             pil = scan.nextInt(); 
             System.out.println("");

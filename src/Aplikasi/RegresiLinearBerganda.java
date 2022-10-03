@@ -55,9 +55,17 @@ public class RegresiLinearBerganda {
                     }
                 }
                 else {
-                    for (k=0;k<row;k++) {
-                        tempC = tempC + tmpM.getElmt(k, i-1)*tmpM.getElmt(k, j-1);
+                    if (j!=0){
+                        for (k=0;k<row;k++) {
+                            tempC = tempC + tmpM.getElmt(k, i-1)*tmpM.getElmt(k, j-1);
+                        }
                     }
+                    else {
+                        for (k=0;k<row;k++) {
+                            tempC = tempC + tmpM.getElmt(k, i-1);
+                        }
+                    }
+
                 }
                 tmpH.setElmt(tempC, i, j);
             }

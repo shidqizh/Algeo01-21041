@@ -444,7 +444,6 @@ public class Menu {
                     Matrix tmpM = IO.fileToMatrix(namaf);
                     int row,col;
                     int i,j,k;
-                    double temp;
                     double tempC;
                     col = tmpM.getCol();
                     row = tmpM.getRow();

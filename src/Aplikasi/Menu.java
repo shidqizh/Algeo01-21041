@@ -56,6 +56,7 @@ public class Menu {
                         System.out.println("INPUT");
                         System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
+                        System.out.println("");
                         switch(z){
                             case 1:
                                 System.out.println("Masukkan nama file (dalam .txt):");
@@ -78,6 +79,7 @@ public class Menu {
                         System.out.println("INPUT");
                         System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
+                        System.out.println("");
                         switch(z){
                             case 1:
                                 System.out.println("Masukkan nama file (dalam .txt):");
@@ -111,6 +113,7 @@ public class Menu {
                         System.out.println("INPUT");
                         System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
+                        System.out.println("");
                         switch(z){
                             case 1:
                                 System.out.println("Masukkan nama file (dalam .txt):");
@@ -139,11 +142,13 @@ public class Menu {
                 System.out.println("METODE");
                 System.out.print("1. Metode Kofaktor\n2. Metode Eliminasi Gauss-Jordan\nPilihan: ");
                 y = scan.nextInt();
+                System.out.println("");
                 switch(y) {
                     case 1:
                         System.out.println("INPUT");
                         System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
+                        System.out.println("");
                         switch(z){
                             case 1:
                                 System.out.println("Masukkan nama file (dalam .txt):");
@@ -166,6 +171,7 @@ public class Menu {
                         System.out.println("INPUT");
                         System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                         z = scan.nextInt();
+                        System.out.println("");
                         switch(z){
                             case 1:
                                 System.out.println("Masukkan nama file (dalam .txt):");
@@ -195,11 +201,13 @@ public class Menu {
                 System.out.println("METODE");
                 System.out.print("1. Metode Eliminasi Gauss-Jordan\n2. Metode Adjoin\nPilihan: ");
                 y = scan.nextInt();
+                System.out.println("");
                 switch(y) {
                     case 1:
                     System.out.println("INPUT");
                     System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                     z = scan.nextInt();
+                    System.out.println("");
                     switch(z){
                         case 1:
                             System.out.println("Masukkan nama file (dalam .txt):");
@@ -231,6 +239,7 @@ public class Menu {
                     System.out.println("INPUT");
                     System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                     z = scan.nextInt();
+                    System.out.println("");
                     switch(z){
                         case 1:
                             System.out.println("Masukkan nama file (dalam .txt):");
@@ -259,6 +268,7 @@ public class Menu {
                 System.out.println("INPUT");
                 System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                 z = scan.nextInt();
+                System.out.println("");
                 switch(z){
                     case 1:
                         System.out.println("Masukkan nama file data titik (dalam .txt):");
@@ -329,6 +339,7 @@ public class Menu {
                 System.out.println("INPUT");
                 System.out.print("1. Input File\n2. Input Keyboard\nPilihan: ");
                 z = scan.nextInt();
+                System.out.println("");
                 switch(z){
                     case 1:
                         System.out.println("Masukkan nama file data (dalam .txt):");

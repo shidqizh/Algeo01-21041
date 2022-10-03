@@ -86,7 +86,7 @@ public class RegresiLinearBerganda {
             }
         }
         System.out.println("");
-
+        System.out.println("");
         // tafsiran
         int pil;
         boolean cek=true;

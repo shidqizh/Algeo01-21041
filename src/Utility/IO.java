@@ -56,11 +56,11 @@ public class IO {
       try{
         FileReader file = new FileReader(String.format("test/" + f));
         BufferedReader bReader = new BufferedReader(file);
-        String line;
+        String curr;
         int count = 0;
-        while((line = bReader.readLine()) != null){
-          String[] lines = line.split(" ");
-          for(int i = 0; i < lines.length; i++){
+        while((curr = bReader.readLine()) != null){
+          String[] lines = curr.split(" ");
+          for(int i=0;i<lines.length;i++){
             double temp = split(lines[i]);
             nm.setElmt(temp,count, i);
           }

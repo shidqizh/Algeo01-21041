@@ -501,7 +501,7 @@ public class Menu {
                     boolean cek=true;
                     while (cek) {
                         System.out.println("Apakah ingin menghitung nilai taksiran pada fungsi tersebut?\n1.Ya\n2.Tidak");
-                        System.out.print("Pilahan : ");
+                        System.out.print("Pilihan : ");
                         pil = scan.nextInt(); 
                         System.out.println("");
                         switch (pil) {
@@ -515,6 +515,7 @@ public class Menu {
                                 }
                                 System.out.printf("y = %.4f", tempH);
                                 System.out.println("");
+                                break;
                             case 2:
                                 cek = false;
                                 break;

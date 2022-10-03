@@ -57,7 +57,7 @@ public class RegresiLinearBerganda {
         
         Matrix hasil = new Matrix(tmpH.getRow(), tmpH.getCol());
         hasil = tmpH.gaussJordan();
-
+        hasil.displayMatrix();
         // display
 
         for (i = 0; i<hasil.getRow();i++){

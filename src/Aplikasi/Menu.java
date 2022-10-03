@@ -510,7 +510,7 @@ public class Menu {
                             case 1:
                                 double tempH=hasil.getElmt(0, hasil.getCol()-1);
                                 double in;
-                                for (i=1;i<row;i++){
+                                for (i=1;i<hasil.getRow();i++){
                                     System.out.printf("x%d = ",i);
                                     in = scan.nextDouble();
                                     tempH = tempH + in*hasil.getElmt(i, hasil.getCol()-1);

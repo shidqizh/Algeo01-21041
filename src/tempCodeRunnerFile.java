@@ -1,1 +1,1 @@
-//public static void main(String[] agrs) {
+main(String[] agrs)

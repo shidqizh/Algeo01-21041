@@ -2,7 +2,6 @@ package Aplikasi;
 
 
 import java.util.Scanner;
-import java.util.*;
 import Matrix.Matrix;
 import Utility.IO;
 
@@ -345,7 +344,6 @@ public class Menu {
                         System.out.println("Masukkan nama file data (dalam .txt):");
                         namaf = scan.next();
                         Matrix nm = IO.fileToMatrix(namaf);
-                        int row = nm.getRow();
 
                         Matrix mm = new Matrix(16,1);
                         int i, j;
@@ -485,7 +483,7 @@ public class Menu {
                     
                     Matrix hasil = new Matrix(tmpH.getRow(), tmpH.getCol());
                     hasil = tmpH.gaussJordan();
-                    hasil.displayMatrix();
+                    System.out.println("");
                     // display
             
                     for (i = 0; i<hasil.getRow();i++){
@@ -497,13 +495,13 @@ public class Menu {
                         }
                     }
                     System.out.println("");
-            
+                    System.out.println("");
                     // tafsiran
                     int pil;
                     boolean cek=true;
                     while (cek) {
                         System.out.println("Apakah ingin menghitung nilai taksiran pada fungsi tersebut?\n1.Ya\n2.Tidak");
-                        System.out.print("Pilahan : ");
+                        System.out.print("Pilihan : ");
                         pil = scan.nextInt(); 
                         System.out.println("");
                         switch (pil) {
@@ -515,8 +513,9 @@ public class Menu {
                                     in = scan.nextDouble();
                                     tempH = tempH + in*hasil.getElmt(i, hasil.getCol()-1);
                                 }
-                                System.out.printf("y = %.4f", tempH);
+                                System.out.printf("y = %.4f\n", tempH);
                                 System.out.println("");
+                                break;
                             case 2:
                                 cek = false;
                                 break;

@@ -513,7 +513,7 @@ public class Menu {
                                 for (i=1;i<row;i++){
                                     System.out.printf("x%d = ",i);
                                     in = scan.nextDouble();
-                                    tempH = tempH + in*hasil.getElmt(i, hasil.getCol());
+                                    tempH = tempH + in*hasil.getElmt(i, hasil.getCol()-1);
                                 }
                                 System.out.printf("y = %.4f", tempH);
                             case 2:

@@ -41,10 +41,17 @@ public class RegresiLinearBerganda {
         Matrix tmpH = new Matrix(col, col+1);
 
         for (i = 0; i<tmpH.getRow();i++){
-            for (j = 0; j<tmpH.getCol()-1;j++){
+            for (j = 0; j<tmpH.getCol();j++){
                 tempC =0;
-                if (i==0 && j==0) {
-                    tempC = row;
+                if (i==0) {
+                    if (j == 0) {
+                        tempC = row;
+                    }
+                    else {
+                        for (k=0;k<row;k++) {
+                            tempC = tempC + tmpM.getElmt(k, j);
+                        }
+                    }
                 }
                 else {
                     for (k=0;k<row;k++) {
@@ -54,6 +61,8 @@ public class RegresiLinearBerganda {
                 tmpH.setElmt(tempC, i, j);
             }
         }
+
+        
         
         Matrix hasil = new Matrix(tmpH.getRow(), tmpH.getCol());
         hasil = tmpH.gaussJordan();

@@ -62,12 +62,13 @@ public class RegresiLinearBerganda {
 
         for (i = 0; i<hasil.getRow();i++){
             if (i==0) {
-                System.out.printf("y = (%.4f)x%d", hasil.getElmt(i,hasil.getCol()-1), i+1);
+                System.out.printf("y = (%.4f)", hasil.getElmt(i,hasil.getCol()-1), i);
             }
             else {
-                System.out.printf(" + (%.4f)x%d", hasil.getElmt(i,hasil.getCol()-1), i+1);
+                System.out.printf(" + (%.4f)x%d", hasil.getElmt(i,hasil.getCol()-1), i);
             }
         }
+        System.out.println("");
 
         // tafsiran
         int pil;

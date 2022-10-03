@@ -436,7 +436,6 @@ public class Menu {
             default:
                 System.out.println("\nMohon masukkan input yang sesuai!");
                 break;
-        }
-    
+        }   
     }
 }
